@@ -1,6 +1,6 @@
 {
   "name": "praise",
-  "license": "UNLICENSED",,
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
