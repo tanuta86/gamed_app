@@ -5,7 +5,7 @@ class Self_introductionTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     # このコードは慣習的に正しくない
-    @self_introduction = SelfIntroduction.new(content: "Lorem ipsum", user_id: @user.id)
+    @self_introduction = @user.build_self_introduction(content: "Lorem ipsum", user_id: @user.id)
   end
 
   test "should be valid" do
