@@ -75,4 +75,14 @@ test "email validation should accept valid addresses" do
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?(:remember, '')
   end
+  
+    test "associated self_introductions should be destroyed" do
+    @user.save
+    @user.build_self_introduction(content: "Lorem ipsum").save
+    assert_difference 'SelfIntroduction.count', -1 do
+      @user.destroy
+    end
+  end
+
+  
 end
