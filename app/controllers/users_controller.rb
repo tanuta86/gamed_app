@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @self_introduction = @user.self_introduction
+  
   end
 
   def new
