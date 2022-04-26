@@ -1,0 +1,10 @@
+<%= form_with(model: @self_introduction, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <!--todo-->
+    <% if current_user.self_introduction.present? %>
+    <%= f.text_area :content, placeholder: "自己紹介文を記入.." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  <% else %>
+<% end %>
