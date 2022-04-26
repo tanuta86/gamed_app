@@ -1,8 +1,12 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @self_introduction = current_user.build_self_introduction if logged_in?
+    if logged_in?
+      @self_introduction  = current_user.self_introduction
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
+
 
 
   def contact

@@ -19,4 +19,13 @@ class SelfIntroductionsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to login_url
   end
+
+  test "should redirect destroy for wrong self_introduction" do
+    log_in_as(users(:michael))
+    self_introduction = self_introductions(:ants)
+    assert_no_difference 'SelfIntroduction.count' do
+      delete self_introduction_path(self_introduction)
+    end
+    assert_redirected_to root_url
+  end
 end
