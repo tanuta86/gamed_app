@@ -5,6 +5,7 @@ class SelfIntroductionsController < ApplicationController
 
   def create
     @self_introduction = current_user.build_self_introduction(self_introduction_params)
+    @self_introduction.image.attach(params[:self_introduction][:image])
     if @self_introduction.save
       flash[:success] = "自己紹介文作成完了!"
       redirect_to root_url
@@ -25,8 +26,9 @@ class SelfIntroductionsController < ApplicationController
   private
 
     def self_introduction_params
-      params.require(:self_introduction).permit(:content)
+      params.require(:self_introduction).permit(:content, :image)
     end
+
     
     def correct_user
       # @self_introduction = current_user.self_introduction.find(id: params[:id])
