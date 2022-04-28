@@ -1,14 +1,15 @@
 <li id="self_introduction-<%= self_introduction.id %>">
   <%= link_to gravatar_for(self_introduction.user, size: 50), self_introduction.user %>
-  <span class="user"><%= link_to self_introduction.user.name, self_introduction.user %></span>
+  <span class="user">    <%= link_to self_introduction.user.name, self_introduction.user %></span>
   <span class="content">
-    <%= micropost.content %>
-    <%= image_tag micropost.display_image if micropost.image.attached? %>
+    <%= self_introduction.content %>
+    <%= image_tag self_introduction.display_image if self_introduction.image.attached? %>
   </span>
+  <span class="timestamp">
       <% if current_user?(self_introduction.user) %>
       <%= link_to "delete", self_introduction, method: :delete,
                                        data: { confirm: "削除しますか?" } %>
-    <!--todo-->
+      <% end %>
     
   </span>
 </li>
