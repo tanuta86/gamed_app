@@ -84,5 +84,31 @@ test "email validation should accept valid addresses" do
     end
   end
 
+  test "should follow and unfollow a user" do
+    michael  = users(:michael)
+    archer   = users(:archer)
+    assert_not michael.following?(archer)
+    michael.follow(archer)
+    assert michael.following?(archer)
+    assert archer.followers.include?(michael)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
+  end
   
+  test "feed should have the right posts" do
+    michael = users(:michael)
+    archer  = users(:archer)
+    lana    = users(:lana)
+    # フォローしているユーザーの投稿を確認
+  
+      assert michael.feed.include?(lana.self_introduction)
+    
+    # 自分自身の投稿を確認
+      assert michael.feed.include?(michael.self_introduction)
+    
+    # フォローしていないユーザーの投稿を確認
+    assert_not michael.feed.include?(archer.self_introduction)
+    
+  end
 end
+
