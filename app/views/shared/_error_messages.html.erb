@@ -1,4 +1,5 @@
-<% if object.errors.present? %>
+<% unless object.present? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
       <!--todo-->
@@ -7,6 +8,7 @@
     <ul>
     <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
+    <% end %>
     <% end %>
     </ul>
   </div>
