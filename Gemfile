@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',      '6.0.4.4'
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', '1.48', require: false
 gem 'image_processing',        '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'active_storage_validations', '0.8.2'
