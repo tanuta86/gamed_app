@@ -3,9 +3,13 @@
   <div class="field">
     <!--todo-->
     <% if current_user.self_introduction.present? %>
-    <%= f.text_area :content, placeholder: "自己紹介文を記入.." %>
+      
+    <% else %>
+      <%= f.text_area :content, placeholder: "自己紹介文を記入.." %>
+            
+    <% end %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
   </span>

@@ -17,7 +17,7 @@ class SelfIntroductionsController < ApplicationController
 
 # 変更
   def destroy
-    @self_introduction.destroy.reload
+    @self_introduction.destroy
     flash[:success] = "自己紹介文を削除しました！"
     redirect_to request.referrer || root_url
   end
