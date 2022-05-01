@@ -27,7 +27,7 @@ class SelfIntroductionsController < ApplicationController
   private
 
     def self_introduction_params
-      params.require(:self_introduction).permit(:content, :image)
+      params.permit(:content, :image)
     end
 
     
