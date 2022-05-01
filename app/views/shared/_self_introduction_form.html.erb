@@ -1,4 +1,4 @@
-<%= form_with(model: @self_introduction, local: true) do |f| %>
+<%= form_with(model: @self_introduction,　url: self_introductions_path, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <!--todo-->
@@ -9,6 +9,7 @@
   </div>
   <%= f.submit "投稿", class: "btn btn-primary" %>
   <span class="image">
+    <%= f.label :image, "プロフィール画像" %><br />
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
   </span>
 <script type="text/javascript">
