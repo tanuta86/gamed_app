@@ -5,7 +5,7 @@ class SelfIntroductionsController < ApplicationController
 
   def create
     @self_introduction = current_user.build_self_introduction(self_introduction_params)
-    unless @self_introduction.image.nil?
+    if @self_introduction.image.present?
       @self_introduction.image.attach(params[:self_introduction][:image]) 
     end
     if @self_introduction.save
