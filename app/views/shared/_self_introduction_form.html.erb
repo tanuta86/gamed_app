@@ -1,4 +1,6 @@
-<%= form_with(model: @self_introduction,　url: self_introductions_path, local: true) do |f| %>
+<!--<%= form_with(model: @self_introduction, local: true) do |f| %>-->
+<%= form_with @self_introduction, url: {controller: 'self_introductions', action: 'create' }  ,local: true do |f| %>
+
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <!--todo-->
