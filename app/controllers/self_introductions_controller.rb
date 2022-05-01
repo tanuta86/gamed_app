@@ -5,7 +5,7 @@ class SelfIntroductionsController < ApplicationController
 
   def create
     @self_introduction = current_user.build_self_introduction(self_introduction_params)
-    @self_introduction.image.attach(params[:self_introduction][:image])
+    @self_introduction.image.attach(params[:self_introduction][:image]) unless [:image].nil?
     if @self_introduction.save
       flash[:success] = "自己紹介文作成完了!"
       redirect_to root_url
