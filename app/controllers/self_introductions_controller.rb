@@ -1,6 +1,6 @@
 class SelfIntroductionsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user,   only: [:create, :destroy ,:edit]
+  before_action :correct_user,     only: [         :destroy ,:edit]
 
 
   def create
@@ -20,9 +20,13 @@ class SelfIntroductionsController < ApplicationController
 # 変更
   def destroy
     @self_introduction.destroy
-    @user.reload
+    
     flash[:success] = "自己紹介文を削除しました！"
     redirect_to request.referrer || root_url
+  end
+  
+  def edit
+
   end
 
 
@@ -35,17 +39,22 @@ class SelfIntroductionsController < ApplicationController
 
     
     def correct_user
+       # todo
       # @self_introduction = current_user.self_introduction.find(id: params[:id])
+      # has_oneにfindが使えない？
       # redirect_to root_url if @self_introduction.nil?
-      # todo
-      if  current_user.self_introduction.id == params[:id]
+      # has_oneにfindが使えない？
+      # redirect_to root_url if @self_introduction.nil?
+      
+      if  current_user.self_introduction && current_user.self_introduction.id.to_s == params[:id]
         @self_introduction = current_user.self_introduction
         
       else
-        @self_introduction = nil
+        redirect_to root_url if @self_introduction.nil?
       end
       
-      redirect_to root_url if @self_introduction.nil?
+      
+    
       
       
     end

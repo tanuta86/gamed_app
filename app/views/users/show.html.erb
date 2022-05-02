@@ -16,7 +16,7 @@
     <% if @user.self_introduction.present? %>
       <h3>自己紹介</h3>
       <ol class="self_introductions">
-        <%= render @user.self_introduction.reload %>
+        <%= render @self_introduction %>
       </ol>
       
     <% end %>
