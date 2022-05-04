@@ -1,18 +1,21 @@
 class SelfIntroductionsController < ApplicationController
-  before_action :logged_in_user,   only: [:create, :destroy ,:edit]
-  before_action :correct_user,     only: [         :destroy ,:edit]
+  before_action :logged_in_user,   only: [:create, :destroy ]
+  before_action :correct_user,     only: [         :destroy ]
 
 
   def create
     @self_introduction = current_user.build_self_introduction(self_introduction_params)
-    if @self_introduction.image.present?
-      @self_introduction.image.attach(params[:self_introduction][:image]) 
-    end
+    
+    # if @self_introduction.image.present?
+    #   @self_introduction.image.attach(params[:self_introduction][:image]) 
+    # end
+    
     if @self_introduction.save
       flash[:success] = "自己紹介文作成完了!"
-      redirect_to root_url
+      #OK!!
+      redirect_to  user_path(@self_introduction.user)
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      # @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
     end
   end

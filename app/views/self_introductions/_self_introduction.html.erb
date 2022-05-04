@@ -1,15 +1,10 @@
-<li id="self_introduction-<%= self_introduction.id %>">
-  <%= link_to gravatar_for(self_introduction.user, size: 50), self_introduction.user %>
-  <span class="user">    <%= link_to self_introduction.user.name, self_introduction.user %></span>
-  <span class="content">
-    <%= self_introduction.content %>
-    <%= image_tag self_introduction.display_image if self_introduction.image.attached? %>
-  </span>
-  <span class="timestamp">
-      <% if current_user?(self_introduction.user) %>
-      <%= link_to "delete", self_introduction, method: :delete,
+<div id="self_introduction-<%= self_introduction.id %>">
+     <%= self_introduction.content %>
+     <br>
+     <br>
+     <% if current_user?(self_introduction.user) %>
+       <%= link_to "自己紹介文削除", self_introduction, method: :delete,
                                        data: { confirm: "削除しますか?" } %>
-      <% end %>
-    
-  </span>
-</li>
+                                 
+     <% end %>
+</div>

@@ -1,28 +1,29 @@
 <%= form_with(model: @self_introduction, url: {controller: 'self_introductions', action: 'create' }  ,local: true) do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <!--todo-->
-    <% unless current_user.self_introduction.present? %>
-    <%= f.text_area :content, placeholder: "自己紹介文を記入.." %>
-      
-    
-  </div>
+  <% unless current_user.self_introduction.present? %>
+    <div class="field">
+     <!--todo-->
+     <%= f.text_area :content, placeholder: "自己紹介文を記入.." %>
+    </div>
+  
   <%= f.submit "投稿", class: "btn btn-primary" %>
-  <span class="image">
-    <%= f.label :image, "プロフィール画像" %><br />
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-  </span>
-<script type="text/javascript">
-  $("#micropost_image").bind("change", function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert("Maximum file size is 5MB. Please choose a smaller file.");
-      $("#micropost_image").val("");
-    }
-  });
-</script>
-  <% else %>
+<!--    <span class="image">-->
+<!--      %= f.label :image, "プロフィール画像" %><br />-->
+<!--      %= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>-->
+<!--    </span>-->
+  
+  <% end %>
+<% end %>
+  
+<!--<script type="text/javascript">-->
+<!--  $("#micropost_image").bind("change", function() {-->
+<!--    var size_in_megabytes = this.files[0].size/1024/1024;-->
+<!--    if (size_in_megabytes > 5) {-->
+<!--      alert("Maximum file size is 5MB. Please choose a smaller file.");-->
+<!--      $("#micropost_image").val("");-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
 
-<% end %>
-<% end %>
+
