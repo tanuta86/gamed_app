@@ -1,4 +1,7 @@
+ <br>
+<br>
 <%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
-             html: { method: :delete }, local: false) do |f| %>
-  <%= f.submit "Unfollow", class: "btn btn-default" %>
+             html: { method: :delete }, local: false) do |f| unless @user.nil? %>
+               
+  <%= f.submit "フォロー解除", class: "btn btn-default" %>
 <% end %>
