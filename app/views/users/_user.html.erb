@@ -2,13 +2,13 @@
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
   
-  
+<div>  
   <% unless user.self_introduction.nil? %>
     <%= "#{user.self_introduction.content}" %>
+  <% else %>
+    <%= "よろしくお願いします。" %>    
   <% end %>
-
-  
-  <%= render 'follow_form' if logged_in? %>
+<div>
   
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
