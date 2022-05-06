@@ -1,0 +1,23 @@
+maruo:
+  category: "played"
+  content: "スーパー丸夫"
+
+ff:
+  category: "played"
+  content: "ファーストファンタジー"
+  
+dq:
+  category: "played"
+  content: "ダブルクエスト"
+
+in:
+  category: "played"
+  content: "インドアファイター"
+  
+awa:
+  category: "played"
+  content: "バブルアンドドラゴンズ"
+
+c:
+  category: "played"
+  content: "クリーチャーハンター"

@@ -32,3 +32,20 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+
+
+# メインのサンプルインフォメーションを作成する
+Information.create!(category: "played", content:  "スーパー丸夫")
+Information.create!(category: "played", content:  "ファーストファンタジー")
+Information.create!(category: "played", content:  "ダブルクエスト")
+Information.create!(category: "played", content:  "インドアファイター")
+Information.create!(category: "played", content:  "バブルアンドドラゴンズ")
+Information.create!(category: "played", content:  "クリーチャーハンター")
+
+# 追加のサンプルインフォメーションを生成
+30.times do |n|
+  content  = Faker::Game.title
+  category = "played"
+  Information.create(content:  content, category: category)
+end
