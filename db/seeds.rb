@@ -34,8 +34,7 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 
-
-# メインのサンプルインフォメーションを作成する
+# メインのサンプルゲームを作成する
 Information.create!(category: "played", content:  "スーパー丸夫")
 Information.create!(category: "played", content:  "ファーストファンタジー")
 Information.create!(category: "played", content:  "ダブルクエスト")
@@ -43,9 +42,41 @@ Information.create!(category: "played", content:  "インドアファイター")
 Information.create!(category: "played", content:  "バブルアンドドラゴンズ")
 Information.create!(category: "played", content:  "クリーチャーハンター")
 
-# 追加のサンプルインフォメーションを生成
+# 追加のサンプルゲームを生成
 30.times do |n|
   content  = Faker::Game.title
   category = "played"
+  Information.create(content:  content, category: category)
+end
+
+
+# メインのサンプルコンソールを作成する
+Information.create!(category: "console", content:  "転任動ツイッチ")
+Information.create!(category: "console", content:  "SP2")
+Information.create!(category: "console", content:  "guindows")
+Information.create!(category: "console", content:  "スマートフォン")
+Information.create!(category: "console", content:  "Mac")
+Information.create!(category: "console", content:  "アナログゲーム")
+
+# 追加のサンプルコンソールを生成
+30.times do |n|
+  content  = Faker::Name.name
+  category = "console"
+  Information.create(content:  content, category: category)
+end
+
+
+# メインのサンプルツールを作成する
+Information.create!(category: "contact", content:  "Dコード")
+Information.create!(category: "contact", content:  "flype")
+Information.create!(category: "contact", content:  "ザ・線")
+Information.create!(category: "contact", content:  "ゾーム")
+Information.create!(category: "contact", content:  "カカポ")
+Information.create!(category: "contact", content:  "電話")
+
+# 追加のサンプルツールを生成
+30.times do |n|
+  content  = Faker::Name.content
+  category = "contact"
   Information.create(content:  content, category: category)
 end

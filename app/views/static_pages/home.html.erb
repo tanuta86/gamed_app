@@ -17,7 +17,10 @@
    <!--それぞれの追加用ページリンク-->
       <section>
         <ul>
-          <li><%= link_to "プレイしたゲームを追加", played_path %></li>
+          <li><%= link_to "プレイしたゲームを追加"   ,   category_path(cate: "played") %></li>
+          <li><%= link_to "持っているゲーム機を追加" ,   category_path(cate: "console") %></li>
+          <li><%= link_to "通信ツールを追加"         ,   category_path(cate: "contact") %></li>
+          
         </ul>
       </section>
 

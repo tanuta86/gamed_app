@@ -1,8 +1,17 @@
 class InformationsController < ApplicationController
-  
-  def played
+
+  def category
     if logged_in?
-      @informations = Information.where("category = ?", "played").paginate(page: params[:page])
+        @params = params[:cate]
+        if @params == "played"
+          @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+        
+        elsif @params == "console"
+          @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+
+        elsif @params == "contact"
+          @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+        end
     end
   end
   

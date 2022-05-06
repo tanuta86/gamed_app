@@ -9,12 +9,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  
 
-  get  '/played', to: 'informations#played'
-  # get  '/console', to: 'static_pages#contact'
-  # get  '/contact', to: 'static_pages#contact'
-  
+  get  '/category',  to: 'informations#category'
   
   resources :users do
     member do

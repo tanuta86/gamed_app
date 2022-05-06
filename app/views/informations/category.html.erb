@@ -1,0 +1,30 @@
+<% provide(:title, @params) %>
+
+<% if @params == "played"  %>
+  <h1>プレイしたゲームを選択する</h1>
+  <h3>今まで遊んだゲームを記録しよう！</h3>
+  <h4>選んだゲームは遊んだことのあるゲームとしてプロフィールで表示されるぞ！</h4>
+  
+<% elsif @params == "console" %>  
+  <h1>ゲーム機を選択する</h1>
+  <h3>普段使用しているゲーム機を選んで、プロフィールに表示させよう！</h3>
+  
+
+<% elsif @params == "contact" %>  
+  <h1>通信ツールを選択する</h1>
+  <h3>他のユーザーと通信しながら遊ぶ時に使うツールを選んで、プロフィールに表示させよう！</h3>
+
+<% else %>    
+<%= render root_url  =%>  
+
+<% end  %>  
+
+<%= will_paginate %>
+
+  <ul class="users">
+
+    <%= render collection: @informations, partial: 'informations/information' %>
+
+  </ul>
+
+<%= will_paginate %>

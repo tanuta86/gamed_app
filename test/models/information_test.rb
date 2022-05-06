@@ -3,7 +3,11 @@ require 'test_helper'
 class InformationTest < ActiveSupport::TestCase
 
   def setup
-    @information = Information.new(category: "Example Information", content: "information@example.com")
+    @information = Information.new(category: "Example information category", content: "Example information content")
+  end
+  
+  def category_played?
+    category == "played"
   end
 
   test "should be valid" do
@@ -30,7 +34,8 @@ class InformationTest < ActiveSupport::TestCase
     assert_not @information.valid?
   end
   
-  test "content  should be unique" do
+  test "played content should be unique" do
+    @information= Information.new(category: "played", content: "Example information content")
     duplicate_information = @information.dup
     duplicate_information.content = @information.content
     @information.save
