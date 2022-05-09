@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :have_informations,    foreign_key: "user_id",
+                                  dependent:   :destroy  
+  
   has_one :self_introduction, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
