@@ -118,6 +118,7 @@ test "email validation should accept valid addresses" do
     assert_not michael.have?(maruo)
     michael.have(maruo)
     assert michael.have?(maruo)
+    assert maruo.users.include?(michael)
     michael.unhave(maruo)
     assert_not michael.have?(maruo)
   end

@@ -80,3 +80,16 @@ Information.create!(category: "contact", content:  "電話")
   category = "contact"
   Information.create(content:  content, category: category)
 end
+
+
+# ユーザー情報を作成する
+users = User.all
+user  = users.first
+infos = Information.all
+info = Information.first
+
+having = users[2..50]
+had = infos[3..20]
+
+had.each { |had| user.have(had) }
+having.each { |haver| haver.have(info) }
