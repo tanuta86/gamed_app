@@ -110,5 +110,16 @@ test "email validation should accept valid addresses" do
     assert_not michael.feed.include?(archer.self_introduction)
     
   end
+  
+  
+  test "should have and unhave a user" do
+    michael = users(:michael)
+    maruo  = information(:maruo)
+    assert_not michael.have?(maruo)
+    michael.have(maruo)
+    assert michael.have?(maruo)
+    michael.unhave(maruo)
+    assert_not michael.have?(maruo)
+  end
 end
 

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
+  
   has_many :have_informations,    foreign_key: "user_id",
                                   dependent:   :destroy  
+  has_many :informations, through: :have_informations                                  
   
   has_one :self_introduction, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
@@ -105,6 +107,26 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+  
+  
+
+
+  # 情報を追加する
+  def have(information)
+    informations << information
+  end
+
+  # 情報を削除する
+  def unhave(information)
+    have_informations.find_by(information_id: information.id).destroy
+  end
+
+  # 現在のユーザーが情報に含まれていたらtrueを返す
+  def have?(information)
+    informations.include?(information)
+  end
+
+  
   
   
 
