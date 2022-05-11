@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module GamedApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -17,5 +19,11 @@ module GamedApp
     # the framework and any gems in your application.
     # 認証トークンをremoteフォームに埋め込む
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    
+    Rails.application.config.i18n.default_locale = :ja
+    #念の為
+    Faker::Config.locale = :ja
   end
+  
+  
 end

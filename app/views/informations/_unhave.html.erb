@@ -1,0 +1,10 @@
+<% @info = information %>
+<%= form_with(model: current_user.have_informations.find_by(information_id: @info.id),
+            html: { method: :delete }, local: false) do |f| %>
+  <%= f.submit "削除する", class: "btn btn-default" %>
+<% end %>
+
+<!--%= form_with(model: current_user.have_informations.find_by(information_id: @infomation.id),-->
+<!--             html: { method: :delete }, local: false) do |f| %>-->
+<!--   %= f.submit "削除する", class: "btn btn-default" %>-->
+<!--% end %>-->

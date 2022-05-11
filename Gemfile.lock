@@ -109,6 +109,8 @@ GEM
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     formatador (1.1.0)
+    gimei (1.0.1)
+      romaji
     globalid (1.0.0)
       activesupport (>= 5.0)
     guard (2.16.2)
@@ -197,6 +199,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.0.4.4)
       actionpack (= 6.0.4.4)
       activesupport (= 6.0.4.4)
@@ -208,6 +213,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.2)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     ruby-progressbar (1.11.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
@@ -285,6 +292,7 @@ DEPENDENCIES
   byebug (= 11.0.1)
   capybara (= 3.28.0)
   faker (= 2.20.0)
+  gimei
   guard (= 2.16.2)
   guard-minitest (= 2.4.6)
   image_processing (= 1.9.3)
@@ -297,6 +305,7 @@ DEPENDENCIES
   puma (= 4.3.6)
   rails (= 6.0.4.4)
   rails-controller-testing (= 1.0.4)
+  rails-i18n
   sass-rails (= 5.1.0)
   selenium-webdriver (= 3.142.4)
   spring (= 2.1.0)

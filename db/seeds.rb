@@ -76,20 +76,25 @@ Information.create!(category: "contact", content:  "電話")
 
 # 追加のサンプルツールを生成
 30.times do |n|
-  content  = Faker::Name.content
+  content  = Faker::Name.name
   category = "contact"
   Information.create(content:  content, category: category)
 end
-
 
 # ユーザー情報を作成する
 users = User.all
 user  = users.first
 infos = Information.all
 info = Information.first
-
 having = users[2..50]
-had = infos[3..20]
-
-had.each { |had| user.have(had) }
+played = infos[3..20]
+console = infos[36..42]
+contact = infos[72..78]
+# 1が,3から20をフォロー
+played.each { |had| user.have(had) }
+# ３から50が,1をフォロー
 having.each { |haver| haver.have(info) }
+
+#1がコンソールとツールをフォロー
+console.each { |had| user.have(had) }
+contact.each { |had| user.have(had) }

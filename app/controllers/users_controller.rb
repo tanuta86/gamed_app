@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.paginate(page: params[:page])
-
   end
 
 
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
-  end
+ end
 
   def followers
     @title = "Followers"

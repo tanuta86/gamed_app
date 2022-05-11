@@ -1,0 +1,2 @@
+module HaveInformationsHelper
+end

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
+  
+  # get  '/information',  to: 'informations#index'
   get  '/category',  to: 'informations#category'
   
   resources :users do
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   resources :self_introductions,  only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   # resources :informations,      　only: [:index]
+  
+  resources :have_informations,       only: [:create, :destroy]
 end
 
 

@@ -1,0 +1,31 @@
+<ul style="list-style: none;">
+  <% case category %>
+  <% when "played" %>
+    <li style="text-decoration:underline"><font size="5"><%= "これまでプレイしたゲーム" %></font></li>
+  <% when "console" %>
+    <li style="text-decoration:underline"><font size="5"><%= "遊んでいるゲーム機" %></font></li>
+  <% when "contact" %>
+    <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li> 
+  <% else %>
+  <% end %>
+  
+  <li><%= ("<br>").html_safe %></li>         
+  
+  <% current_user.informations.where("category = ?", category).each.with_index(1) do |info, i| %>
+    <% if i % 3 == 1 %>
+      <% if !(i == 1) %>
+        <li><%= ("<br>").html_safe %></li>
+      <% end %>  
+      <%= ("<li>").html_safe %>
+    <% end %>
+    <%= "・#{info.content}" %>
+    <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
+    <% if i % 3 == 0 %>
+      <%= ("</li>").html_safe %>
+
+    <% end %>
+  <% end %> 
+
+  <li><%= ("<br>").html_safe %></li>        
+
+</ul>

@@ -2,6 +2,10 @@
 
   <div>  
     <%= "#{information.content}" %>
+    
+    <!--%= render 'have_form' if logged_in? %>-->
+    <%= render partial: 'informations/have_form', locals: { information: information } if logged_in? %>
+
   <div>
 
 </li>

@@ -1,0 +1,50 @@
+<div id="follow_form">
+  <div id="have">
+          
+    <% if current_user.have?(information) %>
+
+      <!--%= render 'unhave' %>  -->
+      
+      <%= render partial: 'unhave', locals: { information: information } %>
+      
+      <!--% @info = information %>-->
+      <!--%= form_with(model: current_user.have_informations.find_by(information_id: @info.id),-->
+      <!--      html: { method: :delete }, local: false) do |f| %>-->
+      <!--  %= f.submit "削除する", class: "btn btn-default" %>-->
+      
+      <!--%= form_with(model: current_user.have_informations.find_by(information_id: @infomation.id),-->
+      <!--             html: { method: :delete }, local: false) do |f| %>-->
+      <!--   %= f.submit "削除する", class: "btn btn-default" %>-->
+      <!--% end %>-->
+      
+
+
+
+    
+    
+    <% else %>
+  
+      <!--%= render 'have' %>-->
+      <%= render partial: 'have',  locals: { information: information } %>
+      
+      <!--% @info = information %>-->
+      <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
+      <!--  <div>%= hidden_field_tag :information_id, @info.id %></div>-->
+      <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
+      <!--% end %>-->
+
+      <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
+      <!--  <div>%= hidden_field_tag :information_id, @infomation.id %></div>-->
+      <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
+      <!--% end %>-->
+    
+    
+   
+    <% end %>
+  
+  </div>
+</div>
+
+
+  
+

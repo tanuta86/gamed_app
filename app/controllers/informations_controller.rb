@@ -3,14 +3,20 @@ class InformationsController < ApplicationController
   def category
     if logged_in?
         @params = params[:cate]
-        if @params == "played"
+        
+        case @params
+        when "played"  
           @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
         
-        elsif @params == "console"
+        when "console"
           @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
 
-        elsif @params == "contact"
+        when "contact"
           @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+        
+        else
+          redirect_to root_url
+        
         end
     end
   end
