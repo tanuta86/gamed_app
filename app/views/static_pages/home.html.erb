@@ -18,7 +18,7 @@
         <%= render partial: 'informations/had_information', locals: { category: "played",  user: current_user } %> 
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>           
-          <li><%= link_to "プレイしたゲームを追加"   ,   category_path(cate: "played") %></li>
+          <li><%= link_to "プレイしたゲームの追加または最近遊ぶゲームリスト編集"   ,   category_path(cate: "played") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>
           
         </ul>
