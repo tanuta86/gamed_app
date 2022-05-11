@@ -18,7 +18,16 @@
       <ol class="self_introductions">
         <%= render @self_introduction %>
       </ol>
-      
+      <br>
+      <br>
+
+      <%= render partial: 'informations/had_information', locals: { category: "played",  user: @user } %>
+      <br>
+      <%= render partial: 'informations/had_information', locals: { category: "console", user: @user } %>    
+      <br>
+      <%= render partial: 'informations/had_information', locals: { category: "contact", user: @user } %>
+      <br>
+        
     <% end %>
   </div>
 </div>

@@ -15,7 +15,7 @@
    <!--それぞれのcontent-->
    <!--それぞれの追加用ページリンク-->
       <section>
-        <%= render partial: 'informations/had_information', locals: { category: "played" } %> 
+        <%= render partial: 'informations/had_information', locals: { category: "played",  user: current_user } %> 
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>           
           <li><%= link_to "プレイしたゲームを追加"   ,   category_path(cate: "played") %></li>
@@ -23,14 +23,14 @@
           
         </ul>
           
-        <%= render partial: 'informations/had_information', locals: { category: "console" } %>
+        <%= render partial: 'informations/had_information', locals: { category: "console", user: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li> 
           <li><%= link_to "持っているゲーム機を追加" ,   category_path(cate: "console") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>  
         </ul>            
 
-        <%= render partial: 'informations/had_information', locals: { category: "contact" } %>
+        <%= render partial: 'informations/had_information', locals: { category: "contact", user: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
           <li><%= link_to "通信ツールを追加"         ,   category_path(cate: "contact") %></li>
