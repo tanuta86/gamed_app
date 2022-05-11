@@ -87,9 +87,9 @@ user  = users.first
 infos = Information.all
 info = Information.first
 having = users[2..50]
-played = infos[3..20]
-console = infos[36..42]
-contact = infos[72..78]
+played = infos[1..20]
+console = infos[36..41]
+contact = infos[72..77]
 # 1が,3から20をフォロー
 played.each { |had| user.have(had) }
 # ３から50が,1をフォロー
