@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   
   resources :have_informations,       only: [:create, :destroy, :edit]
+  
 end
 
 
