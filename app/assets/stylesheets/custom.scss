@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -96,9 +98,13 @@ footer {
   ul {
     float: right;
     list-style: none;
+
+
     li {
       float: left;
       margin-left: 15px;
+
+      
     }
   }
 }
@@ -290,3 +296,14 @@ span.image {
     border: 0;
   }
 }
+
+
+
+.cate{
+    li {
+
+    border-bottom:2px solid #666;
+      
+    }
+}
+  

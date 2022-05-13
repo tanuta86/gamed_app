@@ -9,11 +9,9 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end
 
-
   def show
     @user = User.find(params[:id])
     @self_introduction = @user.self_introduction
-  
   end
 
   def new
@@ -31,7 +29,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit
     @user = User.find(params[:id])
   end
@@ -45,19 +42,19 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url
   end
 
- def following
+  def following
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
- end
+  end
 
   def followers
     @title = "Followers"
@@ -73,15 +70,15 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
-    # beforeフィルター
+    # beforeアクション
 
-    # 正しいユーザーかどうかを確認
+    # 正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # 管理者かどうかを確認
+    # 管理者かどうか確認
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end

@@ -4,7 +4,8 @@
     <% if current_user.have?(information) %>
       <!--%= render 'unhave' %>  -->
       <%= render partial: 'unhave', locals: { information: information } %> 
-
+      
+      <% if params[:cate] == "played" %>
         <% case current_users_have_information(information).recently %>
         <% when false %>
           <% unless recently_MAX? %>
@@ -13,7 +14,7 @@
         <% when true %>  
           <%= link_to "最近遊んでいるゲームから削除", edit_have_information_path(id: information.id, key: "remove") %> 
         <% end %>
-      
+      <% end %>        
     <% else %>
       <%= render partial: 'have', locals: { information: information } %>
     <% end %> 
