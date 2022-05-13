@@ -20,6 +20,22 @@ User.create!(name:  "Example User",
               activated_at: Time.zone.now)
 end
 
+User.create!(name:  "ゆん",
+             email: "ynpa@icloud.com",
+             password:              "aiueo1",
+             password_confirmation: "aiueo1",
+             activated: true,
+             activated_at: Time.zone.now)
+             
+User.create!(name:  "たぬお",
+             email: "t.s.a.tahpkar@gmail.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)           
+             
+
 # ユーザーの一部を対象にマイクロポストを生成する
 users = User.order(:created_at).take(6)
 
@@ -104,5 +120,3 @@ contact.each { |had| user.have(had) }
 having.each { |haver| haver.have(info) }
 having.each { |haver| haver.have(info2) }
 having.each { |haver| haver.have(info3) }
-
-
