@@ -28,9 +28,8 @@ class SelfIntroductionsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
-  def edit
-
-  end
+  # def edit
+  # end
 
 
 

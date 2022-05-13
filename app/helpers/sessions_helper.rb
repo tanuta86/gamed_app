@@ -59,5 +59,21 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+  
+    # 現在のユーザーとinformationのhave_informationオブジェクトを返す
+  def current_users_have_information(information)
+    HaveInformation.find_by(user_id: (current_user.id),information_id: (information.id))  
+  end
+  
+  # 現在のユーザーのrecentlyがMAXならTrueを返す
+  def recently_MAX? 
+    current_user.informations.where("recently = ?", true).count == 10 
+  end
+  
+  # 現在のユーザーの最近のhave_informationオブジェクトの配列を返す
+  def users_recently_have_info(user)
+    user.have_informations.where(recently: true)
+  end  
+
 end
 

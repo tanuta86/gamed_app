@@ -20,6 +20,6 @@ class InformationsController < ApplicationController
       end
     end
   end
-  
 
+  
 end

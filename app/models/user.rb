@@ -127,8 +127,7 @@ class User < ApplicationRecord
   end
 
   
-  
-  
+
 
   private
 

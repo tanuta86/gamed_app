@@ -2,10 +2,21 @@
   <div id="have">
           
     <% if current_user.have?(information) %>
-
       <!--%= render 'unhave' %>  -->
+      <%= render partial: 'unhave', locals: { information: information } %> 
+
+        <% case current_users_have_information(information).recently %>
+        <% when false %>
+          <% unless recently_MAX? %>
+            <%= link_to "最近遊んでいるゲームに登録", edit_have_information_path(id: information.id, key: "register") %>
+          <% end %>  
+        <% when true %>  
+          <%= link_to "最近遊んでいるゲームから削除", edit_have_information_path(id: information.id, key: "remove") %> 
+        <% end %>
       
-      <%= render partial: 'unhave', locals: { information: information } %>  
+    <% else %>
+      <%= render partial: 'have', locals: { information: information } %>
+    <% end %> 
       
       <!--% @info = information %>-->
       <!--%= form_with(model: current_user.have_informations.find_by(information_id: @info.id),-->
@@ -18,15 +29,6 @@
       <!--% end %>-->
       
 
-
-
-    
-    
-    <% else %>
-  
-      <!--%= render 'have' %>-->
-      <%= render partial: 'have',  locals: { information: information } %>
-      
       <!--% @info = information %>-->
       <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
       <!--  <div>%= hidden_field_tag :information_id, @info.id %></div>-->
@@ -40,7 +42,7 @@
     
     
    
-    <% end %>
+
   
   </div>
 </div>

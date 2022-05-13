@@ -15,7 +15,8 @@
    <!--それぞれのcontent-->
    <!--それぞれの追加用ページリンク-->
       <section>
-        <%= render partial: 'informations/had_information', locals: { category: "played",  user: current_user } %> 
+        <%= render partial: 'informations/had_information', locals: { category: "recently",  user: current_user } %>         
+        <%= render partial: 'informations/had_information', locals: { category: "played",    user: current_user } %> 
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>           
           <li><%= link_to "プレイしたゲームの追加または最近遊ぶゲームリスト編集"   ,   category_path(cate: "played") %></li>

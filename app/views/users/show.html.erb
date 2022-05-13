@@ -18,16 +18,34 @@
       <ol class="self_introductions">
         <%= render @self_introduction %>
       </ol>
+    <% end %>  
+    
       <br>
       <br>
+      <%= render partial: 'informations/had_information', locals: { category: "recently",  user: @user } %>
 
-      <%= render partial: 'informations/had_information', locals: { category: "played",  user: @user } %>
+      <% if params[:display] == "all" %>
+        <div style="margin-left:43px">      
+          <%= link_to "全ゲーム表示を閉じる", user_path %>
+        <br>
+        <br>
+        <br>            
+        </div>         
+        <%= render partial: 'informations/had_information', locals: { category: "played",  user: @user } %>
+      <% else %>  
+        <div style="margin-left:43px">
+          <%= link_to "全ゲーム表示", user_path(display: "all") %>
+        </div>        
+      <% end %>
+      
       <br>
+      <br>
+      
       <%= render partial: 'informations/had_information', locals: { category: "console", user: @user } %>    
       <br>
       <%= render partial: 'informations/had_information', locals: { category: "contact", user: @user } %>
       <br>
         
-    <% end %>
+
   </div>
 </div>

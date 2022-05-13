@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :self_introductions,  only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   
-  resources :have_informations,       only: [:create, :destroy]
+  resources :have_informations,       only: [:create, :destroy, :edit]
 end
 
 
