@@ -1,6 +1,7 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
+      
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
@@ -10,6 +11,9 @@
       <section class="self_introduction_form">
         <%= render 'shared/self_introduction_form' %>
       </section>
+      
+
+      
 
    <!--最近プレイ プレイした 持っている 連絡ツール 重視する項目 グループ-->
    <!--それぞれのcontent-->
@@ -37,20 +41,18 @@
           <li><%= link_to "通信ツールを追加"         ,   category_path(cate: "contact") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
-          
 
-          <!--<li>%= link_to "プレイしたゲームを追加"   ,   informations_path(cate: "played") %></li>-->
-          <!--<li>%= link_to "持っているゲーム機を追加" ,   informations_path(cate: "console") %></li>-->
-          <!--<li>%= link_to "通信ツールを追加"         ,   informations_path(cate: "contact") %></li>-->
-
-
+        <%= render partial: 'informations/had_information', locals: { category: "style", user: current_user } %>
+        <ul style="list-style: none;">
+          <li><%= ("<br>").html_safe %></li>                     
+          <li><%= link_to "プレイスタイルを追加"     ,    category_path(cate: "style") %></li>
+          <li><%= ("<br><br><br>").html_safe %></li>           
+        </ul>
+        
       </section>
 
- 
-
-          
     </aside>
-  
+
 
     <div class="col-md-8">
       <!--<h3>フォローユーザー一覧</h3>-->

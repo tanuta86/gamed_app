@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_152050) do
+ActiveRecord::Schema.define(version: 2022_05_16_203236) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2022_05_11_152050) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "created_at"], name: "index_groups_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "have_informations", force: :cascade do |t|
@@ -87,5 +96,6 @@ ActiveRecord::Schema.define(version: 2022_05_11_152050) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "groups", "users"
   add_foreign_key "self_introductions", "users"
 end

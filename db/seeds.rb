@@ -81,6 +81,14 @@ Information.create!(category: "contact", content:  "電話")
   Information.create(content:  content, category: category)
 end
 
+# プレイスタイルを作成する
+Information.create!(category: "style", content:  "エンジョイ")
+Information.create!(category: "style", content:  "マイペース")
+Information.create!(category: "style", content:  "本気")
+Information.create!(category: "style", content:  "協調性重視")
+Information.create!(category: "style", content:  "暇つぶし")
+Information.create!(category: "style", content:  "競技志向")
+
 # メインのサンプルゲームを作成する
 Information.create!(category: "played", content:  "スーパー丸夫")
 Information.create!(category: "played", content:  "ファーストファンタジー")
@@ -96,16 +104,18 @@ Information.create!(category: "played", content:  "クリーチャーハンタ�
   Information.create(content:  content, category: category)
 end
 
+
+
 # ユーザー情報を作成する
 users = User.all
 user  = users.first
 infos = Information.all
-info = Information.find(73)
+info = Information.find(79)
 info2 = Information.find(1)
 info3 = Information.find(37)
 
 having = users[2..50]
-played = infos[72..100]
+played = infos[78..100]
 console = infos[1..6]
 contact = infos[36..41]
 
@@ -120,3 +130,11 @@ contact.each { |had| user.have(had) }
 having.each { |haver| haver.have(info) }
 having.each { |haver| haver.have(info2) }
 having.each { |haver| haver.have(info3) }
+
+# ユーザーの一部を対象にマイクロポストを生成する
+users = User.order(:created_at).take(6)
+3.times do
+  name = Faker::Game.title
+  users.each { |user| user.groups.create!(name: "#{user.name}の#{name}グループ") }
+end
+

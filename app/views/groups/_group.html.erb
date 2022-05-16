@@ -1,0 +1,9 @@
+<li>
+  <span class="user"><%= link_to group.user.name, group.user %></span>
+  <span class="content"><%= group.name %></span>
+  <%= image_tag group.display_image if group.image.attached? %>  
+  <%= image_tag group.image if group.image.attached? %>  
+  <%= link_to "delete", group, method: :delete,
+                        data: { confirm: "削除しますか?" } %>
+
+</li>

@@ -29,6 +29,13 @@
     <% else %>  
       <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li>
     <% end %>
+    
+  <% when "style" %>
+    <% unless user.informations.where("category = ?", category).any? %>
+      <li><font size="3"><%= "プレイスタイル未登録！" %></font></li>
+    <% else %>  
+      <li style="text-decoration:underline"><font size="5"><%= "プレイスタイル" %></font></li>
+    <% end %>
 
   <% end %>
   <li><%= ("<br>").html_safe %></li>         

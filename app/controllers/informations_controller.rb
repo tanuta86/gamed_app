@@ -14,6 +14,9 @@ class InformationsController < ApplicationController
       when "contact"
         @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
         
+      when "style"
+        @informations = Information.where("category = ?", @params).paginate(page: params[:page])         
+        
       else
         redirect_to root_url
         

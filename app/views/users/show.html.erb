@@ -47,7 +47,13 @@
       <br>
       <%= render partial: 'informations/had_information', locals: { category: "contact", user: @user } %>
       <br>
-        
+
+    <% if @user.groups.any? %>
+      <ol class="microposts">
+        <%= render @groups %>
+      </ol>
+      <%= will_paginate @groups %>
+    <% end %>
 
   </div>
 </div>
