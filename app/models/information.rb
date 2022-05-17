@@ -1,5 +1,8 @@
 class Information < ApplicationRecord
-  
+  has_many :tags,                 foreign_key: "information_id", 
+                                  dependent:   :destroy
+  has_many :groups, through: :tags                                 
+                                  
   has_many :have_informations,    foreign_key: "information_id",
                                   dependent:   :destroy  
   has_many :users, through: :have_informations    

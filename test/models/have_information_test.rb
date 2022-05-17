@@ -16,7 +16,7 @@ class HaveInformationTest < ActiveSupport::TestCase
     assert_not @have_information.valid?
   end
 
-  test "should require a haveed_id" do
+  test "should require a had_id" do
     @have_information.information_id = nil
     assert_not @have_information.valid?
   end

@@ -30,4 +30,15 @@ class GroupTest < ActiveSupport::TestCase
     @group.name = "a" * 141
     assert_not @group.valid?
   end
+
+  test "should tag and untag a group" do
+    michael = groups(:michael)
+    maruo  = information(:maruo)
+    assert_not michael.tag?(maruo)
+    michael.tag(maruo)
+    assert michael.tag?(maruo)
+    assert maruo.groups.include?(michael)
+    michael.untag(maruo)
+    assert_not michael.tag?(maruo)
+  end
 end

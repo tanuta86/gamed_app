@@ -1,4 +1,7 @@
 class Group < ApplicationRecord
+  has_many :tags,    foreign_key: "group_id", dependent:   :destroy
+  has_many :informations, through: :tags 
+  
   belongs_to :user
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
@@ -15,5 +18,20 @@ class Group < ApplicationRecord
   # 表示用のリサイズ済み画像を返す
   def display_image
     image.variant(resize_to_limit: [500, 500])
-  end                                      
-end
+  end 
+  
+  # 情報を追加する
+  def tag(information)
+    informations << information
+  end
+
+  # 情報を削除する
+  def untag(information)
+    tags.find_by(information_id: information.id).destroy
+  end
+
+  # 現在のユーザーが情報に含まれていたらtrueを返す
+  def tag?(information)
+    informations.include?(information)
+  end
+end  
