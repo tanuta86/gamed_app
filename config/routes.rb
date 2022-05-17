@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   resources :have_informations,       only: [:create, :destroy, :edit]
   
-  resources :groups,          only: [:create, :destroy]
+  resources :groups,          only: [:create, :destroy, :index]
 end
 
 

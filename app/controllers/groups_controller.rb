@@ -1,11 +1,16 @@
 class GroupsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :index]
   before_action :correct_user,   only: :destroy
+  
   def new
   end
   
+  def index
+    @groups = Group.paginate(page: params[:page])
+  end  
+  
   def create
-    @group = current_user.groups.buils(group_params)
+    @group = current_user.groups.build(group_params)
     @group.image.attach(params[:group][:image])    
     if @group.save
       flash[:success] = "グループ作成完了!"

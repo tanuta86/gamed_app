@@ -52,6 +52,14 @@
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
         
+        
+        <% if @user.groups.any? %>
+          <ol class="microposts">
+            <%= render @groups %>
+          </ol>
+          <%= will_paginate @groups %>
+        <% end %>        
+        
       </section>
 
     </aside>
@@ -59,7 +67,7 @@
 
     <div class="col-md-8">
       <!--<h3>フォローユーザー一覧</h3>-->
-      <!--<%= render 'shared/feed' %>-->
+      <!--%= render 'shared/feed' %>-->
     </div>
   </div>
 <% else %>
