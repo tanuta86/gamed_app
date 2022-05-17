@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   # get  '/information',  to: 'informations#index'
   get  '/category',  to: 'informations#category'
   
+
+
+  
   resources :users do
     member do
       get :following, :followers
@@ -27,7 +30,8 @@ Rails.application.routes.draw do
   
   resources :have_informations,       only: [:create, :destroy, :edit]
   
-  resources :groups,          only: [:create, :destroy, :index]
+  resources :groups,          only: [:create, :destroy, :index, :show, :update]
+
 end
 
 

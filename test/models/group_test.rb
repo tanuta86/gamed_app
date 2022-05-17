@@ -25,4 +25,9 @@ class GroupTest < ActiveSupport::TestCase
     @group.name = "a" * 51
     assert_not @group.valid?
   end
+  
+  test "explanation should be at most 140 characters" do
+    @group.name = "a" * 141
+    assert_not @group.valid?
+  end
 end

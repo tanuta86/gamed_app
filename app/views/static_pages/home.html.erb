@@ -11,7 +11,6 @@
       <section class="self_introduction_form">
         <%= render 'shared/self_introduction_form' %>
       </section>
-      
 
       <section class="micropost_form">
         <%= render 'shared/group_form' %>
@@ -51,18 +50,26 @@
           <li><%= link_to "プレイスタイルを追加"     ,    category_path(cate: "style") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
-        
-        
+
         <% if @user.groups.any? %>
+        <ul style="list-style: none;">
+          <li><%= ("<br>").html_safe %></li>                     
+          <font size="3"><%= "作成したグループ" %></font>
+        </ul>
           <ol class="microposts">
             <%= render @groups %>
           </ol>
           <%= will_paginate @groups %>
+        <% else %>
+        <ul style="list-style: none;">
+          <li><%= ("<br>").html_safe %></li>                     
+          <font size="3"><%= "作成したグループはありません" %></font>
+        </ul>   
         <% end %>        
         
       </section>
 
-    </aside>
+
 
 
     <div class="col-md-8">
@@ -86,3 +93,4 @@
 
 <% end %>
 
+    </aside>

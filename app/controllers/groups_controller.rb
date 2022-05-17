@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :index]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user, only: [:create, :destroy, :index, :edit, :update]
+  before_action :correct_user,   only: [:destroy, :edit, :update]
   
   def new
   end
@@ -9,9 +9,15 @@ class GroupsController < ApplicationController
     @groups = Group.paginate(page: params[:page])
   end  
   
+  def show
+    @group = Group.find(params[:id])
+    @user = @group.user
+    #micropost
+  end
+  
   def create
     @group = current_user.groups.build(group_params)
-    @group.image.attach(params[:group][:image])    
+    @group.image.attach(params[:group][:image]) 
     if @group.save
       flash[:success] = "グループ作成完了!"
       redirect_to root_url
@@ -26,10 +32,16 @@ class GroupsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
+  def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)
+    redirect_to request.referrer || root_url
+  end
+  
   private
 
     def group_params
-      params.require(:group).permit(:name, :image)
+      params.require(:group).permit(:name, :image, :explanation)
     end  
   
     def correct_user

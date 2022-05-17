@@ -2,6 +2,7 @@
   <% case category %>
   <% when "recently" %>
     <% unless users_recently_have_info(current_user).any? %>
+      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
       <li><font size="3"><%= "最近遊んだゲームが未登録！" %></font></li>
     <% else %>  
       <li style="text-decoration:underline"><font size="5"><%= "最近遊んでいるゲーム" %></font></li>
@@ -9,13 +10,15 @@
     
   <% when "played" %>
     <% unless user.informations.where("category = ?", category).any? %>
+      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
       <li><font size="3"><%= "これまで遊んだゲームが未登録！" %></font></li>         
-    <% else %>      
+    <% else %>     
       <li style="text-decoration:underline"><font size="5"><%= "これまでプレイしたゲーム" %></font></li>
     <% end %>
     
   <% when "console" %>
     <% unless user.informations.where("category = ?", category).any? %>
+      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
       <li><font size="3"><%= "遊んでいるゲーム機未登録！" %></font></li>
       <li><%= ("<br>").html_safe %></li>   
     <% else %>  
@@ -25,6 +28,7 @@
     
   <% when "contact" %>
     <% unless user.informations.where("category = ?", category).any? %>
+      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
       <li><font size="3"><%= "通信ツール未登録！" %></font></li>
     <% else %>  
       <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li>
@@ -41,35 +45,27 @@
   <li><%= ("<br>").html_safe %></li>         
   
   <% if category == "recently" %>
-      <% users_recently_have_info(current_user).each.with_index(1) do |have_info, i| %>
-      <% if i % 3 == 1 %>
-        <% if !(i == 1) %>
-          <li><%= ("<br>").html_safe %></li>
-        <% end %>  
-        <%= ("<li>").html_safe %>
-      <% end %>
+      <% users_recently_have_info(current_user).each do |have_info| %>
+
+        <li>
+
       <%= "・#{Information.find(have_info.information_id).content}" %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
-      <% if i % 3 == 0 %>
-        <%= ("</li>").html_safe %>
+
+        </li>
   
       <% end %>
-    <% end %> 
+
   <%else %>
-    <% user.informations.where("category = ?", category).each.with_index(1) do |info, i| %>
-      <% if i % 3 == 1 %>
-        <% if !(i == 1) %>
-          <li><%= ("<br>").html_safe %></li>
-        <% end %>  
-        <%= ("<li>").html_safe %>
-      <% end %>
+    <% user.informations.where("category = ?", category).each do |info| %>
+
+        <li>
       <%= "・#{info.content}" %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
-      <% if i % 3 == 0 %>
-        <%= ("</li>").html_safe %>
-  
-      <% end %>
-    <% end %> 
+        </li>
+
+  <% end %>
+  <li><%= ("<br>").html_safe %></li>        
+
+
   <% end %>
   <li><%= ("<br>").html_safe %></li>        
 

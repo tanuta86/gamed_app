@@ -4,6 +4,8 @@ class Group < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true  
   validates :name, presence: true, length: { maximum: 50 }
+  validates :explanation, length: { maximum: 140 }
+
   
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "must be a valid image format" },

@@ -1,0 +1,14 @@
+<h2>グループページ</h2>
+<div class="inner">
+  <%= render @group %>
+  
+  <% if current_user == @group.user || current_user.admin? %>  
+　  <%= form_with(model: @group, local: true) do |f| %>
+  　   <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_area  :explanation, placeholder: "グループの説明を変更...", id: @group.id %>
+      </div>
+      <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
