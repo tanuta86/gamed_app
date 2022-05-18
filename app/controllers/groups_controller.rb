@@ -12,16 +12,13 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = @group.user
-
     #micropost
-
-    
     if logged_in?
       @params = params[:cate]
         
       if @params == "played" || "console" || "contact" || "style"   
        @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
-
+       @groups = @informations
       end
     else
       redirect_to root_url      
