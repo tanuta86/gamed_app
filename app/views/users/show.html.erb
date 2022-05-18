@@ -24,7 +24,7 @@
     
       <br>
       <br>
-      <%= render partial: 'informations/had_information', locals: { category: "recently",  user: @user } %>
+      <%= render partial: 'informations/had_information', locals: { category: "recently", mode: "user",  owner: @user } %>
 
       <% if params[:display] == "all" %>
         <div style="margin-left:43px">      
@@ -33,7 +33,7 @@
         <br>
         <br>            
         </div>         
-        <%= render partial: 'informations/had_information', locals: { category: "played",  user: @user } %>
+        <%= render partial: 'informations/had_information', locals: { category: "played", mode: "user" , owner: @user } %>
       <% else %>  
         <div style="margin-left:43px">
           <%= link_to "全ゲーム表示", user_path(display: "all") %>
@@ -43,9 +43,9 @@
       <br>
       <br>
       
-      <%= render partial: 'informations/had_information', locals: { category: "console", user: @user } %>    
+      <%= render partial: 'informations/had_information', locals: { category: "console", mode: "user", owner: @user } %>    
       <br>
-      <%= render partial: 'informations/had_information', locals: { category: "contact", user: @user } %>
+      <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "user", owner: @user } %>
       <br>
 
     <% if @user.groups.any? %>

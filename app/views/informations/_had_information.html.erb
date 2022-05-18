@@ -1,48 +1,51 @@
 <ul style="list-style: none;">
-  <% case category %>
-  <% when "recently" %>
-    <% unless users_recently_have_info(current_user).any? %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
-      <li><font size="3"><%= "最近遊んだゲームが未登録！" %></font></li>
-    <% else %>  
-      <li style="text-decoration:underline"><font size="5"><%= "最近遊んでいるゲーム" %></font></li>
-    <% end %>
-    
-  <% when "played" %>
-    <% unless user.informations.where("category = ?", category).any? %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
-      <li><font size="3"><%= "これまで遊んだゲームが未登録！" %></font></li>         
-    <% else %>     
-      <li style="text-decoration:underline"><font size="5"><%= "これまでプレイしたゲーム" %></font></li>
-    <% end %>
-    
-  <% when "console" %>
-    <% unless user.informations.where("category = ?", category).any? %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
-      <li><font size="3"><%= "遊んでいるゲーム機未登録！" %></font></li>
-      <li><%= ("<br>").html_safe %></li>   
-    <% else %>  
-      <li style="text-decoration:underline"><font size="5"><%= "遊んでいるゲーム機" %></font></li>
+  <% if mode == "user" %>
+    <% case category %>
+    <% when "recently" %>
+      <% unless users_recently_have_info(current_user).any? %>
+        <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
+        <li><font size="3"><%= "最近遊んだゲームが未登録！" %></font></li>
+      <% else %>  
+        <li style="text-decoration:underline"><font size="5"><%= "最近遊んでいるゲーム" %></font></li>
+      <% end %>
       
-    <% end %> 
-    
-  <% when "contact" %>
-    <% unless user.informations.where("category = ?", category).any? %>
-      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
-      <li><font size="3"><%= "通信ツール未登録！" %></font></li>
-    <% else %>  
-      <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li>
+      <!--ownerはgroupもしくはuserー-->
+    <% when "played" %>
+      <% unless owner.informations.where("category = ?", category).any? %>
+        <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
+        <li><font size="3"><%= "これまで遊んだゲームが未登録！" %></font></li>         
+      <% else %>     
+        <li style="text-decoration:underline"><font size="5"><%= "これまでプレイしたゲーム" %></font></li>
+      <% end %>
+      
+    <% when "console" %>
+      <% unless owner.informations.where("category = ?", category).any? %>
+        <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>
+        <li><font size="3"><%= "遊んでいるゲーム機未登録！" %></font></li>
+        <li><%= ("<br>").html_safe %></li>   
+      <% else %>  
+        <li style="text-decoration:underline"><font size="5"><%= "遊んでいるゲーム機" %></font></li>
+        
+      <% end %> 
+      
+    <% when "contact" %>
+      <% unless owner.informations.where("category = ?", category).any? %>
+        <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
+        <li><font size="3"><%= "通信ツール未登録！" %></font></li>
+      <% else %>  
+        <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li>
+      <% end %>
+      
+    <% when "style" %>
+      <% unless owner.informations.where("category = ?", category).any? %>
+        <li><font size="3"><%= "プレイスタイル未登録！" %></font></li>
+      <% else %>  
+        <li style="text-decoration:underline"><font size="5"><%= "プレイスタイル" %></font></li>
+      <% end %>
+  
     <% end %>
-    
-  <% when "style" %>
-    <% unless user.informations.where("category = ?", category).any? %>
-      <li><font size="3"><%= "プレイスタイル未登録！" %></font></li>
-    <% else %>  
-      <li style="text-decoration:underline"><font size="5"><%= "プレイスタイル" %></font></li>
-    <% end %>
-
+    <li><%= ("<br>").html_safe %></li>         
   <% end %>
-  <li><%= ("<br>").html_safe %></li>         
   
   <% if category == "recently" %>
       <% users_recently_have_info(current_user).each do |have_info| %>
@@ -56,7 +59,7 @@
       <% end %>
 
   <%else %>
-    <% user.informations.where("category = ?", category).each do |info| %>
+    <% owner.informations.where("category = ?", category).each do |info| %>
 
         <li>
       <%= "・#{info.content}" %>

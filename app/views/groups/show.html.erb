@@ -1,14 +1,36 @@
 <h2>グループページ</h2>
-<div class="inner">
-  <%= render @group %>
-  
-  <% if current_user == @group.user || current_user.admin? %>  
-　  <%= form_with(model: @group, local: true) do |f| %>
-  　   <%= render 'shared/error_messages', object: f.object %>
-      <div class="field">
-        <%= f.text_area  :explanation, placeholder: "グループの説明を変更...", id: @group.id %>
-      </div>
-      <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
-    <% end %>
-  <% end %>
+  <div class="row">
+    <div class="col-md-8">  
+      <%= render @group %>
+      <aside class="col-md-4">
+
+        <div class="wrap">
+          <div class="wrapped"> 
+            <% if current_user == @group.user || current_user.admin? %>  
+           　  <%= form_with(model: @group, local: true) do |f| %>
+              　  <%= render 'shared/error_messages', object: f.object %>
+                <div class="field">
+                  <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
+                </div>
+                <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        
+          <div class="wrapped"> 
+           <br>
+           <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
+          
+            <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
+            <br>
+            <br>
+                
+            <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
+            <br>
+            <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
+            <br>
+          </div>
+      </div>  
+    </aside>  
+  </div>
 </div>

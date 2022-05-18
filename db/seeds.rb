@@ -157,7 +157,7 @@ played.each { |tagged| group.tag(tagged) }
 console.each { |tagged| group.tag(tagged) }
 contact.each { |tagged| group.tag(tagged) }
 
-# ３から50が,1,2,3をフォロー
+# 2から10が,1,2,3をフォロー
 tagging.each { |tagger| tagger.tag(info) }
 tagging.each { |tagger| tagger.tag(info2) }
 tagging.each { |tagger| tagger.tag(info3) }

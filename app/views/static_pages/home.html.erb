@@ -21,8 +21,8 @@
    <!--それぞれのcontent-->
    <!--それぞれの追加用ページリンク-->
       <section>
-        <%= render partial: 'informations/had_information', locals: { category: "recently",  user: current_user } %>         
-        <%= render partial: 'informations/had_information', locals: { category: "played",    user: current_user } %> 
+        <%= render partial: 'informations/had_information', locals: { category: "recently", mode: "user",  owner: current_user } %>         
+        <%= render partial: 'informations/had_information', locals: { category: "played"  , mode: "user",  owner: current_user } %> 
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>           
           <li><%= link_to "プレイしたゲームの追加または最近遊ぶゲームリスト編集"   ,   category_path(cate: "played") %></li>
@@ -30,21 +30,21 @@
           
         </ul>
           
-        <%= render partial: 'informations/had_information', locals: { category: "console", user: current_user } %>
+        <%= render partial: 'informations/had_information', locals: { category: "console", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li> 
           <li><%= link_to "持っているゲーム機を追加" ,   category_path(cate: "console") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>  
         </ul>            
 
-        <%= render partial: 'informations/had_information', locals: { category: "contact", user: current_user } %>
+        <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
           <li><%= link_to "通信ツールを追加"         ,   category_path(cate: "contact") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
 
-        <%= render partial: 'informations/had_information', locals: { category: "style", user: current_user } %>
+        <%= render partial: 'informations/had_information', locals: { category: "style", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
           <li><%= link_to "プレイスタイルを追加"     ,    category_path(cate: "style") %></li>
