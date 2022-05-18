@@ -22,37 +22,36 @@
            <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
           
             <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
-            <br>
-            <br>
+
 
             <ul style="list-style: none;">
-              <li><%= ("<br>").html_safe %></li>           
+         
               <li><%= link_to "ゲームタグ追加"   ,   group_path(cate: "played") %></li>
               <li><%= ("<br><br><br>").html_safe %></li>
               
             </ul>            
                 
             <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
-            <br>
+
             
             <ul style="list-style: none;">
-              <li><%= ("<br>").html_safe %></li> 
+
               <li><%= link_to "ゲーム機のタグを追加" ,   group_path(cate: "console") %></li>
               <li><%= ("<br><br><br>").html_safe %></li>  
             </ul>                
             
             <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
-            <br>
+
             
             <ul style="list-style: none;">
-              <li><%= ("<br>").html_safe %></li>                     
+                  
               <li><%= link_to "通信ツールタグを追加"         ,   group_path(cate: "contact") %></li>
               <li><%= ("<br><br><br>").html_safe %></li>           
             </ul>
 
             <%= render partial: 'informations/had_information', locals: { category: "style", mode: "group",  owner: @group } %>
             <ul style="list-style: none;">
-              <li><%= ("<br>").html_safe %></li>                     
+                   
               <li><%= link_to "プレイスタイルタグを追加"     ,    group_path(cate: "style") %></li>
               <li><%= ("<br><br><br>").html_safe %></li>           
             </ul>            
