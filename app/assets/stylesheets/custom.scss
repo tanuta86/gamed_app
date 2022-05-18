@@ -312,9 +312,13 @@ span.image {
 }
   
 .wrap {
-  display:flex;
-  flex-flow: column;
+    position: relative; 
 } 
-.wrap {
-text-align: left;
-}  
+.wrapped {
+ position: absolute;  
+ margin:  auto;        
+} 
+
+.left{
+  margin-left: 60%;
+}

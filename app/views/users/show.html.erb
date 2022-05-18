@@ -47,6 +47,8 @@
       <br>
       <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "user", owner: @user } %>
       <br>
+      <%= render partial: 'informations/had_information', locals: { category: "style",   mode: "user", owner: @user } %>
+      <br>      
 
     <% if @user.groups.any? %>
       <ol class="microposts">

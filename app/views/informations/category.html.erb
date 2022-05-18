@@ -28,7 +28,7 @@
 
   <ul class="users">
 
-    <%= render collection: @informations, partial: 'informations/information' %>
+    <%= render collection: @informations, partial: 'informations/information', locals: { mode: "user" } %>
 
   </ul>
 

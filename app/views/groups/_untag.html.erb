@@ -1,0 +1,6 @@
+<% @info = information %>
+<%= form_with(model: @group.tags.find_by(information_id: @info.id),
+            html: { method: :delete }, local: false) do |f| %>
+  <div><%= hidden_field_tag :group_id, @group.id %></div>            
+  <%= f.submit "タグを解除する", class: "btn btn-default" %>
+<% end %>

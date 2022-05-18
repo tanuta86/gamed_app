@@ -1,4 +1,4 @@
-  <div class="content"><%= link_to "グループ名：#{group.name}", group %></div>
+  <div class="content"><%= link_to "グループ名：#{group.name}", group_path(group, cate: "none") %></div>
   <% if group.explanation.present? %>
     <div class="content"><%= "グループの説明" %></div>  
     <div class="content"><%= "#{group.explanation}" %></div>

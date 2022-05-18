@@ -12,9 +12,26 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = @group.user
+
     #micropost
-  end
-  
+
+    
+    if logged_in?
+      @params = params[:cate]
+        
+      if @params == "played" || "console" || "contact" || "style"   
+       @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+
+      end
+    else
+      redirect_to root_url      
+    end
+    
+
+    
+  end    
+    
+
   def create
     @group = current_user.groups.build(group_params)
     @group.image.attach(params[:group][:image]) 
