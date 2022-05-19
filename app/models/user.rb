@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :favorites,    foreign_key: "user_id", dependent:   :destroy
-  has_many :groups, through: :favorites
-  
+
   has_many :groups
 
   has_many :have_informations,    foreign_key: "user_id",
@@ -130,7 +129,20 @@ class User < ApplicationRecord
     informations.include?(information)
   end
 
-  
+  # ユーザーをフォローする
+  def favorite(group)
+    favorites << Favorite.new(user_id: self.id, group_id: group.id)    
+  end
+
+  # ユーザーをフォロー解除する
+  def not_favorite(group)
+    favorites.find_by(group_id: group.id).destroy
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def favorite?(group)
+    favorites.include?(Favorite.find_by(group_id: group.id))
+  end  
 
 
   private

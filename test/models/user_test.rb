@@ -122,5 +122,15 @@ test "email validation should accept valid addresses" do
     michael.unhave(maruo)
     assert_not michael.have?(maruo)
   end
+  
+  test "should favorite and not_favorite a user" do
+    michael = users(:michael)
+    archer  = groups(:archer)
+    assert_not michael.favorite?(archer)
+    michael.favorite(archer)
+    assert michael.favorite?(archer)
+    michael.not_favorite(archer)
+    assert_not michael.favorite?(archer)
+  end
 end
 

@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
   has_many :favorites,                 foreign_key: "group_id", 
                                        dependent:   :destroy 
-  has_many :users, through: :favorites                                       
+                                  
   
   has_many :tags,    foreign_key: "group_id", dependent:   :destroy
   has_many :informations, through: :tags 
