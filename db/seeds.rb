@@ -138,7 +138,8 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.groups.create!(name: "#{user.name}の#{name}グループ") }
 end
 
-# ユーザー情報を作成する
+
+# グループと情報を作成する
 groups = Group.all
 group  = groups.first
 infos = Information.all
@@ -162,5 +163,22 @@ tagging.each { |tagger| tagger.tag(info) }
 tagging.each { |tagger| tagger.tag(info2) }
 tagging.each { |tagger| tagger.tag(info3) }
 
+# ユーザーとグループを作成する
+users = User.all
+user  = users.first
+groups = Group.all
+group = Group.find(1)
+group2 = Group.find(2)
+group3 = Group.find(3)
+
+users2 = users[2..10]
+groups2 = groups[1..15]
 
 
+# 1が,1から15をfavorite
+groups2.each { |gro| user.favorite(gro) }
+
+# 2から10が,1,2,3をfavorite
+users2.each { |user2| user2.favorite(group) }
+users2.each { |user2| user2.favorite(group2) }
+users2.each { |user2| user2.favorite(group3) }

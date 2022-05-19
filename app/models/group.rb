@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true  
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 100 }
   validates :explanation, length: { maximum: 140 }
 
   

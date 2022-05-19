@@ -21,16 +21,11 @@ class GroupTest < ActiveSupport::TestCase
     assert_not @group.valid?
   end
 
-  test "name should be at most 140 characters" do
-    @group.name = "a" * 51
+  test "name should be at most 100 characters" do
+    @group.name = "a" * 101
     assert_not @group.valid?
   end
   
-  test "explanation should be at most 140 characters" do
-    @group.name = "a" * 141
-    assert_not @group.valid?
-  end
-
   test "should tag and untag a group" do
     michael = groups(:michael)
     maruo  = information(:maruo)

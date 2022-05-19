@@ -1,1 +1,15 @@
+one:
+  user: michael
+  group: lana
 
+two:
+  user: michael
+  group: malory
+
+three:
+  user: lana
+  group: michael
+
+four:
+  user: archer
+  group: michael

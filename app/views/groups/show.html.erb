@@ -1,7 +1,8 @@
 <% if @params == "none" %>
   <h2>グループページ</h2>
   <div class="row">
-    <div class="col-md-8">  
+    <div class="col-md-8">
+    <%= render 'favorite_form' if logged_in? %>        
       <%= render @group %>
       <aside class="col-md-4">
 

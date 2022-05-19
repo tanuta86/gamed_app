@@ -1,0 +1,10 @@
+<% if current_user.favorite?(@group) %>
+<!--div id="favorite_form">-->
+<!--  div id="favorite">-->
+<%= render 'not_favorite' %>    
+<!--%= render partial: 'users/not_favorite', locals: { group: group } %> -->
+
+  <% else %>
+<%= render 'favorite' %>
+<!--%= render partial: 'users/favorite', locals: { group: group } %> -->    
+  <% end %>
