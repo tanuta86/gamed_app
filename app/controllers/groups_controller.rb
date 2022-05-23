@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
   
   def index
     @groups = Group.paginate(page: params[:page])
+    @user = current_user
   end  
   
   def show

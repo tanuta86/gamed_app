@@ -21,13 +21,16 @@
         <%= render @self_introduction %>
       </ol>
     <% end %>  
-    
+
       <br>
       <br>
+      <div style="margin-left: 5%">         
+        <h3>プレイヤー情報</h3>      
+      </div>
       <%= render partial: 'informations/had_information', locals: { category: "recently", mode: "user",  owner: @user } %>
 
       <% if params[:display] == "all" %>
-        <div style="margin-left:43px">      
+        <div style="margin-left: 6%">      
           <%= link_to "全ゲーム表示を閉じる", user_path %>
         <br>
         <br>
@@ -35,7 +38,7 @@
         </div>         
         <%= render partial: 'informations/had_information', locals: { category: "played", mode: "user" , owner: @user } %>
       <% else %>  
-        <div style="margin-left:43px">
+        <div style="margin-left: 6%">
           <%= link_to "全ゲーム表示", user_path(display: "all") %>
         </div>        
       <% end %>

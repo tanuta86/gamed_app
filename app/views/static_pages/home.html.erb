@@ -20,6 +20,9 @@
    <!--最近プレイ プレイした 持っている 連絡ツール 重視する項目 グループ-->
    <!--それぞれのcontent-->
    <!--それぞれの追加用ページリンク-->
+      <div style="margin-left: 10%">         
+        <h3>プレイヤー情報</h3>      
+      </div>   
       <section>
         <%= render partial: 'informations/had_information', locals: { category: "recently", mode: "user",  owner: current_user } %>         
         <%= render partial: 'informations/had_information', locals: { category: "played"  , mode: "user",  owner: current_user } %> 
@@ -51,28 +54,40 @@
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
 
-        <% if @user.groups.any? %>
+        <div style="margin-left: 10%">
+          <h3>お気に入りのグループ</h3>      
+        </div>
+        <br>
+        <% if @groups2.any? %>
+          <ol class="microposts">
+            <%= render partial: 'groups/group', collection: @groups3, as: "group" %>  
+          </ol>
+
+        <% else %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
-          <font size="3"><%= "作成したグループ" %></font>
-        </ul>
+          <font size="3"><%= "お気に入りグループはありません" %></font>
+        </ul>   
+        <% end %>       
+        <div style="margin-left: 10%">         
+          <h3>作成したグループ</h3>      
+        </div>
+        <br>
+        <% if @user.groups.any? %>
           <ol class="microposts">
-            <%= render @groups %>
+            <%= render partial: 'groups/group', collection: @groups2, as: "group" %>             
           </ol>
-          <%= will_paginate @groups %>
+
         <% else %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
           <font size="3"><%= "作成したグループはありません" %></font>
         </ul>   
-        <% end %>        
+        <% end %>          
+        
         
       </section>
-
-
-
-
-    <div class="col-md-8">
+      <div class="col-md-8">
       <!--<h3>フォローユーザー一覧</h3>-->
       <!--%= render 'shared/feed' %>-->
     </div>
@@ -89,8 +104,7 @@
     </h2>
   
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  </div>
-
-<% end %>
-
     </aside>
+  </div>
+<% end %>
+   

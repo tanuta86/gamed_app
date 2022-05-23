@@ -1,16 +1,13 @@
 <li>
-
   <div>  
     <%= "#{information.content}" %>
-    <!--%= render 'have_form' if logged_in? %>-->
-    <% if mode == "user" %> 
+
+    <% case mode %>
+    <% when "user" %>
+        <!--%= render 'have_form' if logged_in? %>-->
       <%= render partial: 'informations/have_form', locals: { information: information } if logged_in? %>
-    <% end %>
-    
-    <% if mode == "group" %> 
+    <% when "group" %>
       <%= render partial: 'groups/tag_form', locals: { information: information } if logged_in? %>
     <% end %>    
-    
   <div>
-
 </li>

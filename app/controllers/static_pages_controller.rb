@@ -7,7 +7,14 @@ class StaticPagesController < ApplicationController
       @group = current_user.groups.build if logged_in?
       
       @user = current_user
-      @groups = @user.groups.paginate(page: params[:page])
+      @groups2 = @user.groups
+      
+
+      group_ids = []
+      @user.favorites.each{ |favorite_object| group_ids.push(favorite_object.group_id) }
+      @groups3 = []
+      group_ids.each{ |id| @groups3 << Group.find(id)}
+
     end
   end
 

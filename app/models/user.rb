@@ -141,7 +141,7 @@ class User < ApplicationRecord
 
   # 現在のユーザーがフォローしてたらtrueを返す
   def favorite?(group)
-    favorites.include?(Favorite.find_by(group_id: group.id))
+    favorites.include?(Favorite.find_by(group_id: group.id, user_id: id))
   end
 
 

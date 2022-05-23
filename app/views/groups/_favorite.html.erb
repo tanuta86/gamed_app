@@ -3,7 +3,7 @@
 <!--  div>%= hidden_field_tag :group_id, @group.id %>/div>-->
 <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
 <!--% end %>-->
-
+<% @group = group %>
 <%= form_with(model: @user.favorites.build, local: false) do |f| %>
 <div><%= hidden_field_tag :user_id, @current_user.id %></div>
 <div><%= hidden_field_tag :group_id, @group.id %></div>

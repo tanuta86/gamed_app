@@ -1,15 +1,20 @@
+<% unless group.id.nil?%>
+  <%= render partial: 'groups/favorite_form', locals: { group: group } if logged_in? %> 
+  
   <div class="content"><%= link_to "グループ名：#{group.name}", group_path(group, cate: "none") %></div>
-  <% if group.explanation.present? %>
-    <div class="content"><%= "グループの説明" %></div>  
-    <div class="content"><%= "#{group.explanation}" %></div>
-  <% end %>
-  <br>  
-
-  <div class="user"><%= link_to "作成者：#{group.user.name}", group.user %></div>
-  <div><%= image_tag group.display_image if group.image.attached? %></div>
+  
+    <% if group.explanation.present? %>
+      <div class="content"><%= "グループの説明" %></div>  
+      <div class="content"><%= "#{group.explanation}" %></div>
+    <% end %>
+    <br>  
+  
+    <div class="user"><%= link_to "作成者：#{group.user.name}", group.user %></div>
+    <div><%= image_tag group.display_image if group.image.attached? %></div>
   <% if current_user == group.user || current_user.admin? %>  
     <div><%= link_to "delete", group, method: :delete,
-                        data: { confirm: "削除しますか?" } %></div>
+                          data: { confirm: "削除しますか?" } %></div>
   <% end %>
 
 <hr>
+<% end %>
