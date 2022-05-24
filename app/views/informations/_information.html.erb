@@ -1,6 +1,6 @@
-<li>
+
   <div>  
-    <%= "#{information.content}" %>
+      <div>  <%= "#{information.content}" %>  <div>
 
     <% case mode %>
     <% when "user" %>
@@ -10,4 +10,3 @@
       <%= render partial: 'groups/tag_form', locals: { information: information } if logged_in? %>
     <% end %>    
   <div>
-</li>

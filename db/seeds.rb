@@ -104,8 +104,6 @@ Information.create!(category: "played", content:  "クリーチャーハンタ�
   Information.create(content:  content, category: category)
 end
 
-
-
 # ユーザー情報を作成する
 users = User.all
 user  = users.first

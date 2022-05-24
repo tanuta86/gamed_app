@@ -1,9 +1,13 @@
 <% if @params == "none" %>
-  <h2>グループページ</h2>
+
   <div class="row">
-    <div class="col-md-8">
+  
+    <div class="col-md-10">
+  <h2>グループページ</h2>      
       <%= render @group %>
-      <aside class="col-md-4">
+<div class="fle">       
+     
+      <aside class="col-md-5">
         
       <% if logged_in? %>
         <section class="micropost_form">
@@ -62,6 +66,9 @@
             
  
     </aside>
+
+    
+<div class="lef">     
   <% if @group.microposts.any? %>
     <h3>投稿数 (<%= @group.microposts.count %>)</h3>
     <ol class="microposts">
@@ -69,6 +76,8 @@
     </ol>
     <%= will_paginate @microposts %>
   <% end %>
+</div>
+</div>       
   </div>
 </div>
 

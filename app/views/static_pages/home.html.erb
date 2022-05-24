@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-5">
       
       <section class="user_info">
         <%= render 'shared/user_info' %>
@@ -11,7 +11,7 @@
       <section class="self_introduction_form">
         <% if current_user.self_introduction.present? %>
           <div style="margin-left: 10%">         
-          <h2>自己紹介</h2>
+          <h3>自己紹介</h3>
           <ol class="self_introductions">
             <%= render @self_introduction %>
           </ol>
@@ -110,16 +110,17 @@
 <% else %>
 
   <div class="center jumbotron">
-    <h1>Welcome to the Sample App</h1>
+    <h1>ゲームドへようこそ！</h1>
   
     <h2>
-      This is the home page for the
-      <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-      sample application.
+      
     </h2>
   
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "サインアップしてゲームドを始める！！", signup_path, class: "btn btn-lg btn-primary" %>
     </aside>
+    <br>
+    <br>
+              <div><%= link_to "作成済みアカウントでログインする", login_path %></div>
   </div>
 <% end %>
    
