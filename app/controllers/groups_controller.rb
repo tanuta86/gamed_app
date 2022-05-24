@@ -13,7 +13,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = @group.user
-    #micropost
+    @microposts = @group.microposts.paginate(page: params[:page])
+    
     if logged_in?
       @params = params[:cate]
         

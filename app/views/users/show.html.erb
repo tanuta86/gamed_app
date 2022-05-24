@@ -53,11 +53,20 @@
       <%= render partial: 'informations/had_information', locals: { category: "style",   mode: "user", owner: @user } %>
       <br>      
 
+      <div style="margin-left: 5%">         
+        <h3>作成したグループ</h3>      
+      </div>
+        
     <% if @user.groups.any? %>
       <ol class="microposts">
         <%= render @groups %>
       </ol>
       <%= will_paginate @groups %>
+    <% else %>
+      <ul style="list-style: none;">
+        <li><%= ("<br>").html_safe %></li>                     
+        <font size="3"><%= "作成したグループはありません" %></font>
+       </ul>        
     <% end %>
 
   </div>

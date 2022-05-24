@@ -5,10 +5,12 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
     password: "foobar", password_confirmation: "foobar")
+    @group = Group.new(name: "Example Group", user_id: users(:michael).id )
   end
 
   test "should be valid" do
     assert @user.valid?
+    assert @group.valid?    
   end
 
   test "name should be present" do
@@ -131,6 +133,15 @@ test "email validation should accept valid addresses" do
     assert michael.favorite?(archer)
     michael.not_favorite(archer)
     assert_not michael.favorite?(archer)
+  end
+  
+  test "associated microposts should be destroyed" do
+    @user.save
+    # Micropost.create!(content: "Lorem ipsum", user_id: @user.id, group_id: groups(:michael).id)
+    @user.microposts.build(content: "Lorem ipsum", group_id: groups(:michael).id).save! 
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
   end
 end
 

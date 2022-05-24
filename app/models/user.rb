@@ -1,8 +1,7 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   has_many :favorites,    foreign_key: "user_id", dependent:   :destroy
-
   has_many :groups
-
   has_many :have_informations,    foreign_key: "user_id",
                                   dependent:   :destroy  
   has_many :informations, through: :have_informations                                  

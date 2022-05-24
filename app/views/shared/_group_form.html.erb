@@ -5,6 +5,11 @@
     <%= f.text_area  :explanation, placeholder: "グループの説明を記入..." %>
   </div>
   <%= f.submit "グループを作成する", class: "btn btn-primary" %>
+<br>
+<br>
+<div style="margin-left: 5%">         
+  <h3>グループ画像</h3>      
+</div>  
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>    
   </span>  

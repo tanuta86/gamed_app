@@ -4,22 +4,27 @@
     <div class="col-md-8">
       <%= render @group %>
       <aside class="col-md-4">
+        
+      <% if logged_in? %>
+        <section class="micropost_form">
+          <%= render partial: 'shared/micropost_form', locals: { group: @group } %>
+        </section>
+      <% end %>
 
+      <% if current_user == @group.user || current_user.admin? %>  
+        <%= form_with(model: @group, local: true) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="field">
+            <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
+          </div>
+          <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
 
-            <% if current_user == @group.user || current_user.admin? %>  
-           　  <%= form_with(model: @group, local: true) do |f| %>
-              　  <%= render 'shared/error_messages', object: f.object %>
-                <div class="field">
-                  <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
-                </div>
-                <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
-
-           <br>
-           <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
+      <br>
+      <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
           
-            <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
+        <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
 
 
             <ul style="list-style: none;">
@@ -56,7 +61,14 @@
             
             
  
-    </aside>  
+    </aside>
+  <% if @group.microposts.any? %>
+    <h3>投稿数 (<%= @group.microposts.count %>)</h3>
+    <ol class="microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+  <% end %>
   </div>
 </div>
 

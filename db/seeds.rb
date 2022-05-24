@@ -182,3 +182,9 @@ groups2.each { |gro| user.favorite(gro) }
 users2.each { |user2| user2.favorite(group) }
 users2.each { |user2| user2.favorite(group2) }
 users2.each { |user2| user2.favorite(group3) }
+
+groups = Group.order(:created_at).take(6)
+20.times do
+  content = "#{Faker::Game.title}で遊ぼう！"
+  groups.each { |group| group.microposts.build(content: content, user_id: User.first.id).save! }
+end

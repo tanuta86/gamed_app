@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
+  has_many :microposts, dependent: :destroy  
   has_many :favorites,                 foreign_key: "group_id", 
-                                       dependent:   :destroy 
-                                  
+                                       dependent:   :destroy
   
   has_many :tags,    foreign_key: "group_id", dependent:   :destroy
   has_many :informations, through: :tags 

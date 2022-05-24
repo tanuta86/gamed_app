@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_093216) do
+ActiveRecord::Schema.define(version: 2022_05_23_052753) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 2022_05_19_093216) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "microposts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_microposts_on_group_id"
+    t.index ["user_id", "group_id", "created_at"], name: "index_microposts_on_user_id_and_group_id_and_created_at"
+    t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -118,5 +129,7 @@ ActiveRecord::Schema.define(version: 2022_05_19_093216) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "groups", "users"
+  add_foreign_key "microposts", "groups"
+  add_foreign_key "microposts", "users"
   add_foreign_key "self_introductions", "users"
 end

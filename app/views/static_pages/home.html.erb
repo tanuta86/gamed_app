@@ -9,13 +9,28 @@
         <%= render 'shared/stats' %>
       </section>
       <section class="self_introduction_form">
-        <%= render 'shared/self_introduction_form' %>
-      </section>
+        <% if current_user.self_introduction.present? %>
+          <div style="margin-left: 10%">         
+          <h2>自己紹介</h2>
+          <ol class="self_introductions">
+            <%= render @self_introduction %>
+          </ol>
+          </div>
+        <% else %>  
+          <div style="margin-left: 10%">         
+            <h3>自己紹介文作成</h3>      
+          </div>
+          <%= render 'shared/self_introduction_form' %>  
+        <% end %>
 
+      </section>      
       <section class="micropost_form">
+          <div style="margin-left: 10%">         
+            <h3>新規グループ作成</h3>      
+          </div>        
         <%= render 'shared/group_form' %>
       </section>  
-      
+      <br>      
 
    <!--最近プレイ プレイした 持っている 連絡ツール 重視する項目 グループ-->
    <!--それぞれのcontent-->
@@ -58,7 +73,7 @@
           <h3>お気に入りのグループ</h3>      
         </div>
         <br>
-        <% if @groups2.any? %>
+        <% if @groups2.first.name.present? %>
           <ol class="microposts">
             <%= render partial: 'groups/group', collection: @groups3, as: "group" %>  
           </ol>
@@ -68,12 +83,13 @@
           <li><%= ("<br>").html_safe %></li>                     
           <font size="3"><%= "お気に入りグループはありません" %></font>
         </ul>   
-        <% end %>       
+        <% end %>
+        <br>
         <div style="margin-left: 10%">         
           <h3>作成したグループ</h3>      
         </div>
         <br>
-        <% if @user.groups.any? %>
+        <% if @user.groups.first.name.present? %>
           <ol class="microposts">
             <%= render partial: 'groups/group', collection: @groups2, as: "group" %>             
           </ol>
@@ -83,8 +99,7 @@
           <li><%= ("<br>").html_safe %></li>                     
           <font size="3"><%= "作成したグループはありません" %></font>
         </ul>   
-        <% end %>          
-        
+        <% end %>
         
       </section>
       <div class="col-md-8">

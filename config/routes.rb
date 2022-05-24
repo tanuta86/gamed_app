@@ -27,11 +27,9 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :self_introductions,  only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
-  resources :have_informations,       only: [:create, :destroy, :edit]
-  resources :groups,          only: [:create, :destroy, :index, :show, :update]
-  resources :tags,       only: [:create, :destroy]
-  
-  resources :favorites,       only: [:create, :destroy]
+  resources :have_informations,   only: [:create, :destroy, :edit]
+  resources :groups,              only: [:create, :destroy, :index, :show, :update]
+  resources :tags,                only: [:create, :destroy]
+  resources :favorites,           only: [:create, :destroy]
+  resources :microposts,          only: [:create, :destroy]
 end
-
-

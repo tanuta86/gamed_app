@@ -1,0 +1,9 @@
+<%= form_with(model: @micropost, url: microposts_path , local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "投稿文を記入..." %>
+  </div>
+  <div><%= hidden_field_tag :user_id, current_user.id %></div>
+  <div><%= hidden_field_tag :group_id, group.id %></div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
