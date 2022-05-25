@@ -36,32 +36,23 @@ class SelfIntroductionsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  private
+private
 
-    def self_introduction_params
-      params.require(:self_introduction).permit(:content)
-    end
+  def self_introduction_params
+    params.require(:self_introduction).permit(:content)
+  end
 
-    
-    def correct_user
-       # todo
-      # @self_introduction = current_user.self_introduction.find(id: params[:id])
-      # has_oneにfindが使えない？
-      # redirect_to root_url if @self_introduction.nil?
-      # has_oneにfindが使えない？
-      # redirect_to root_url if @self_introduction.nil?
-      
-      if  current_user.self_introduction && current_user.self_introduction.id.to_s == params[:id]
-        @self_introduction = current_user.self_introduction
-        
-      else
-        redirect_to root_url if @self_introduction.nil?
-      end
-      
-      
-    
-      
-      
+  def correct_user
+     # todo
+    # @self_introduction = current_user.self_introduction.find(id: params[:id])
+    # has_oneにfindが使えない？
+    # redirect_to root_url if @self_introduction.nil?
+    # has_oneにfindが使えない？
+    # redirect_to root_url if @self_introduction.nil?
+    if  current_user.self_introduction && current_user.self_introduction.id.to_s == params[:id]
+      @self_introduction = current_user.self_introduction
+    else
+      redirect_to root_url if @self_introduction.nil?
     end
-    
+  end
 end

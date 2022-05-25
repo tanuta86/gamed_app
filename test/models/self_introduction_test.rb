@@ -4,7 +4,6 @@ class Self_introductionTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:michael)
-    # このコードは慣習的に正しくない
     @self_introduction = @user.build_self_introduction(content: "Lorem ipsum", user_id: @user.id)
   end
 
@@ -16,8 +15,7 @@ class Self_introductionTest < ActiveSupport::TestCase
     @self_introduction.user_id = nil
     assert_not @self_introduction.valid?
   end
-  
-  
+
   test "content should be present" do
     @self_introduction.content = "   "
     assert_not @self_introduction.valid?

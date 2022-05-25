@@ -74,6 +74,5 @@ module SessionsHelper
   def users_recently_have_info(user)
     user.have_informations.where(recently: true)
   end  
-
 end
 

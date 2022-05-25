@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :index, :edit, :update]
   before_action :correct_user,   only: [:destroy, :edit, :update]
-  
+ 
   def new
   end
   
@@ -14,20 +14,16 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @user = @group.user
     @microposts = @group.microposts.paginate(page: params[:page])
-    
     if logged_in?
       @params = params[:cate]
         
       if @params == "played" || "console" || "contact" || "style"   
-       @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
-       @groups = @informations
+        @informations = Information.where("category = ?", @params).paginate(page: params[:page]) 
+        @groups = @informations
       end
     else
       redirect_to root_url      
     end
-    
-
-    
   end    
     
 
@@ -54,14 +50,14 @@ class GroupsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
-  private
+private
 
-    def group_params
-      params.require(:group).permit(:name, :image, :explanation)
-    end  
-  
-    def correct_user
-      @group = current_user.groups.find_by(id: params[:id])
-      redirect_to root_url if @group.nil?
-    end
+  def group_params
+    params.require(:group).permit(:name, :image, :explanation)
+  end  
+
+  def correct_user
+    @group = current_user.groups.find_by(id: params[:id])
+    redirect_to root_url if @group.nil?
+  end
 end

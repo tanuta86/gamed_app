@@ -2,14 +2,14 @@
   <% if mode == "user" %>
     <% case category %>
     <% when "recently" %>
-      <% unless users_recently_have_info(current_user).any? %>
-        <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
-        <li><font size="3"><%= "最近遊んだゲームが未登録！" %></font></li>
-      <% else %>  
-        <li style="text-decoration:underline"><font size="5"><%= "最近遊んでいるゲーム" %></font></li>
-      <% end %>
-      
-      <!--ownerはgroupもしくはuserー-->
+    <% unless users_recently_have_info(current_user).any? %>
+      <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
+      <li><font size="3"><%= "最近遊んだゲームが未登録！" %></font></li>
+    <% else %>  
+      <li style="text-decoration:underline"><font size="5"><%= "最近遊んでいるゲーム" %></font></li>
+    <% end %>
+
+    <!--ownerはgroupもしくはuserー-->
     <% when "played" %>
       <% unless owner.informations.where("category = ?", category).any? %>
         <%= ("&nbsp;&nbsp;&nbsp;").html_safe %>    
@@ -25,7 +25,6 @@
         <li><%= ("<br>").html_safe %></li>   
       <% else %>  
         <li style="text-decoration:underline"><font size="5"><%= "遊んでいるゲーム機" %></font></li>
-        
       <% end %> 
       
     <% when "contact" %>
@@ -35,41 +34,37 @@
       <% else %>  
         <li style="text-decoration:underline"><font size="5"><%= "使用する通信ツール" %></font></li>
       <% end %>
-      
     <% when "style" %>
       <% unless owner.informations.where("category = ?", category).any? %>
         <li><font size="3"><%= "プレイスタイル未登録！" %></font></li>
       <% else %>  
         <li style="text-decoration:underline"><font size="5"><%= "プレイスタイル" %></font></li>
       <% end %>
-  
     <% end %>
     <li><%= ("<br>").html_safe %></li>         
   <% end %>
   
   <% if category == "recently" %>
       <% users_recently_have_info(current_user).each do |have_info| %>
-
-        <li>
-
-      <%= "・#{Information.find(have_info.information_id).content}" %>
-
-        </li>
+    <li>
+      <% info = Information.find(have_info.information_id) %>
+      <%= link_to "・#{info.content}", information_path(info, mode: "group") %>
+    </li>
   
-      <% end %>
+  <% end %>
 
   <%else %>
+  
     <% owner.informations.where("category = ?", category).each do |info| %>
 
-        <li>
-      <%= "・#{info.content}" %>
-        </li>
+    <li>
+      <%= link_to "・#{info.content}", information_path(info, mode: "group") %>      
+    </li>
 
   <% end %>
   <li><%= ("<br>").html_safe %></li>        
 
-
-  <% end %>
-  <li><%= ("<br>").html_safe %></li>        
+<% end %>
+<li><%= ("<br>").html_safe %></li>        
 
 </ul>

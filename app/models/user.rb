@@ -109,9 +109,6 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-  
-  
-
 
   # 情報を追加する
   def have(information)
@@ -143,17 +140,16 @@ class User < ApplicationRecord
     favorites.include?(Favorite.find_by(group_id: group.id, user_id: id))
   end
 
+private
 
-  private
+  # メールアドレスをすべて小文字にする
+  def downcase_email
+    self.email = email.downcase
+  end
 
-    # メールアドレスをすべて小文字にする
-    def downcase_email
-      self.email = email.downcase
-    end
-
-    # 有効化トークンとダイジェストを作成および代入する
-    def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
-    end
+  # 有効化トークンとダイジェストを作成および代入する
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
 end

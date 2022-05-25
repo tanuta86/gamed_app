@@ -20,14 +20,14 @@ class MicropostsController < ApplicationController
 
   
   
-  private
+private
 
-    def micropost_params
-      params.permit(:content, :user_id, :group_id)
-    end
-    
-    def correct_user
-      @micropost = current_user.microposts.find_by(id: params[:id])
-      redirect_to root_url if @micropost.nil?
-    end
+  def micropost_params
+    params.permit(:content, :user_id, :group_id)
+  end
+  
+  def correct_user
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    redirect_to root_url if @micropost.nil?
+  end
 end

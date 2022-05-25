@@ -7,7 +7,6 @@ class InformationsController < ApplicationController
       if @params == "played" || "console" || "contact" || "style"
         @informations = Information.where("category = ?", @params).paginate(page: params[:page])
       end
-      
     end
   end
   
@@ -36,13 +35,13 @@ class InformationsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  private
+private
 
-    def information_params
-      params.permit(:category, :content)
-    end
-    
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def information_params
+    params.permit(:category, :content)
+  end
+  
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end

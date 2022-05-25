@@ -1,45 +1,39 @@
-  <div class="row">
-    <div class="col-md-6">
-<div id="follow_form">
-  <div id="tag">
+<div class="row">
+  <div class="col-md-6">
+    <div id="follow_form">
+      <div id="tag">
 
-    <% if @group.tag?(information) %>
-      <!--%= render 'unhave' %>  -->
-      <%= render partial: 'groups/untag', locals: { information: information } %> 
-    <% else %>
-      <%= render partial: 'groups/tag', locals: { information: information } %>
-    <% end %> 
-      
-      <!--% @info = information %>-->
-      <!--%= form_with(model: current_user.have_informations.find_by(information_id: @info.id),-->
-      <!--      html: { method: :delete }, local: false) do |f| %>-->
-      <!--  %= f.submit "削除する", class: "btn btn-default" %>-->
-      
-      <!--%= form_with(model: current_user.have_informations.find_by(information_id: @infomation.id),-->
-      <!--             html: { method: :delete }, local: false) do |f| %>-->
-      <!--   %= f.submit "削除する", class: "btn btn-default" %>-->
-      <!--% end %>-->
-      
+        <% if @group.tag?(information) %>
+          <!--%= render 'unhave' %>  -->
+          <%= render partial: 'groups/untag', locals: { information: information } %> 
+        <% else %>
+          <%= render partial: 'groups/tag', locals: { information: information } %>
+        <% end %> 
+          
+        <!--% @info = information %>-->
+        <!--%= form_with(model: current_user.have_informations.find_by(information_id: @info.id),-->
+        <!--      html: { method: :delete }, local: false) do |f| %>-->
+        <!--  %= f.submit "削除する", class: "btn btn-default" %>-->
+        
+        <!--%= form_with(model: current_user.have_informations.find_by(information_id: @infomation.id),-->
+        <!--             html: { method: :delete }, local: false) do |f| %>-->
+        <!--   %= f.submit "削除する", class: "btn btn-default" %>-->
+        <!--% end %>-->
 
-      <!--% @info = information %>-->
-      <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
-      <!--  <div>%= hidden_field_tag :information_id, @info.id %></div>-->
-      <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
-      <!--% end %>-->
-
-      <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
-      <!--  <div>%= hidden_field_tag :information_id, @infomation.id %></div>-->
-      <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
-      <!--% end %>-->
-    
-    
-   
-
+        <!--% @info = information %>-->
+        <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
+        <!--  <div>%= hidden_field_tag :information_id, @info.id %></div>-->
+        <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
+        <!--% end %>-->
   
-  </div>
-</div>
+        <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->
+        <!--  <div>%= hidden_field_tag :information_id, @infomation.id %></div>-->
+        <!--  %= f.submit "追加する", class: "btn btn-primary" %>-->
+        <!--% end %>-->
+      </div>
     </div>
   </div>
+</div>
 
 
   

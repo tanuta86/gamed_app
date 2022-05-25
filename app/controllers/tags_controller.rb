@@ -1,9 +1,7 @@
 class TagsController < ApplicationController
-
   before_action :logged_in_user
 
   def create
-
     @info = Information.find(params[:information_id])
     @group = Group.find(params[:group_id])
     @group.tag(@info)
@@ -24,5 +22,4 @@ class TagsController < ApplicationController
     #   format.js
     # end
   end
-  
 end

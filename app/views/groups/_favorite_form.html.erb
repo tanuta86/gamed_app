@@ -1,14 +1,13 @@
 <div class="row">
   <div class="col-md-6">
-  <% if current_user.favorite?(group) %>
-  <!--div id="favorite_form">-->
-  <!--  div id="favorite">-->
-  <!--%= render 'not_favorite' %>    -->
-  <%= render partial: 'groups/not_favorite', locals: { group: group } %> 
-
-  <% else %>
-  <!--%= render 'favorite' %>-->
-  <%= render partial: 'groups/favorite', locals: { group: group } %> 
-  <% end %>
+    <% if current_user.favorite?(group) %>
+      <!--div id="favorite_form">-->
+      <!--  div id="favorite">-->
+      <!--%= render 'not_favorite' %>    -->
+      <%= render partial: 'groups/not_favorite', locals: { group: group } %> 
+    <% else %>
+      <!--%= render 'favorite' %>-->
+      <%= render partial: 'groups/favorite', locals: { group: group } %> 
+    <% end %>
   </div>
 </div>

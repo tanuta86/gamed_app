@@ -1,39 +1,35 @@
 <div class="fle">
-<% provide(:title, @params) %>
-<div>
-<% case @params %>
-<% when "played"  %>
-  <h1>プレイしたゲームを選択する</h1>
-  <h3>今まで遊んだゲームを記録しよう！</h3>
-  <h4>選んだゲームは遊んだことのあるゲームとしてプロフィールで表示されるぞ！</h4>
-  
-<% when "console" %>  
-  <h1>ゲーム機を選択する</h1>
-  <h3>普段使用しているゲーム機を選んで、プロフィールに表示させよう！</h3>
-  
+  <% provide(:title, @params) %>
+  <div>
+    <% case @params %>
+    <% when "played"  %>
+      <h1>プレイしたゲームを選択する</h1>
+      <h3>今まで遊んだゲームを記録しよう！</h3>
+      <h4>選んだゲームは遊んだことのあるゲームとしてプロフィールで表示されるぞ！</h4>
+      
+    <% when "console" %>  
+      <h1>ゲーム機を選択する</h1>
+      <h3>普段使用しているゲーム機を選んで、プロフィールに表示させよう！</h3>
 
-<% when "contact" %>  
-  <h1>通信ツールを選択する</h1>
-  <h3>他のユーザーと遊ぶ時に使う通信ツールを選んで、プロフィールに表示させよう！</h3>
-  
-<% when "style" %>  
-  <h1>プレイヤーのスタイルを選択する</h1>
-  <h3>自分のプレイスタイルを選んで、プロフィールに表示させよう！</h3>  
-
-<% else %>    
-  <%= render root_url  =%>  
-
-<% end  %>  
-</div>
-<div>
-<%= will_paginate %>
-
-  <ul class="users">
-<div class="fle">
-    <%= render collection: @informations, partial: 'information', locals: { mode: "user" } %>
-</div>
-  </ul>
-
-<%= will_paginate %>
-</div>
+    <% when "contact" %>  
+      <h1>通信ツールを選択する</h1>
+      <h3>他のユーザーと遊ぶ時に使う通信ツールを選んで、プロフィールに表示させよう！</h3>
+      
+    <% when "style" %>  
+      <h1>プレイヤーのスタイルを選択する</h1>
+      <h3>自分のプレイスタイルを選んで、プロフィールに表示させよう！</h3>  
+    
+    <% else %>    
+      <%= render root_url  =%>  
+    <% end  %>  
+  </div>
+  <div>
+    <%= will_paginate %>
+    <ul class="users">
+      <div class="fle">
+        <%= render collection: @informations, partial: 'information', locals: { mode: "user" } %>
+      </div>
+    </ul>
+    <%= will_paginate %>
+  </div>
 </div>

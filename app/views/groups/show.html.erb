@@ -1,98 +1,71 @@
 <% if @params == "none" %>
-
   <div class="row">
-  
     <div class="col-md-10">
-  <h2>グループページ</h2>      
+      <h2>グループページ</h2>      
       <%= render @group %>
-<div class="fle">       
-     
-      <aside class="col-md-5">
-        
-      <% if logged_in? %>
-        <section class="micropost_form">
-          <%= render partial: 'shared/micropost_form', locals: { group: @group } %>
-        </section>
-      <% end %>
+      <div class="fle">       
+        <aside class="col-md-5">
+          <% if logged_in? %>
+            <section class="micropost_form">
+              <%= render partial: 'shared/micropost_form', locals: { group: @group } %>
+            </section>
+          <% end %>
 
-      <% if current_user == @group.user || current_user.admin? %>  
-        <%= form_with(model: @group, local: true) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <div class="field">
-            <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
-          </div>
-          <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+          <% if current_user == @group.user || current_user.admin? %>  
+            <%= form_with(model: @group, local: true) do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+              <div class="field">
+                <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
+                <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          <% end %>
+          <br>
+          <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
+          <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
+          <ul style="list-style: none;">
+            <li><%= link_to "ゲームタグ追加"   ,   group_path(cate: "played") %></li>
+            <li><%= ("<br><br><br>").html_safe %></li>
+          </ul>            
+          <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
+          <ul style="list-style: none;">
+            <li><%= link_to "ゲーム機のタグを追加" ,   group_path(cate: "console") %></li>
+            <li><%= ("<br><br><br>").html_safe %></li>  
+          </ul>                
+          <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
+          <ul style="list-style: none;">
+            <li><%= link_to "通信ツールタグを追加"         ,   group_path(cate: "contact") %></li>
+            <li><%= ("<br><br><br>").html_safe %></li>           
+          </ul>
+
+          <%= render partial: 'informations/had_information', locals: { category: "style", mode: "group",  owner: @group } %>
+          <ul style="list-style: none;">
+            <li><%= link_to "プレイスタイルタグを追加"     ,    group_path(cate: "style") %></li>
+            <li><%= ("<br><br><br>").html_safe %></li>           
+          </ul>            
+        </aside>
+        <div class="lef">     
+        <% if @group.microposts.any? %>
+          <h3>投稿数 (<%= @group.microposts.count %>)</h3>
+          <ol class="microposts">
+            <%= render @microposts %>
+          </ol>
+          <%= will_paginate @microposts %>
         <% end %>
-      <% end %>
-
-      <br>
-      <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
-          
-        <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
-
-
-            <ul style="list-style: none;">
-         
-              <li><%= link_to "ゲームタグ追加"   ,   group_path(cate: "played") %></li>
-              <li><%= ("<br><br><br>").html_safe %></li>
-              
-            </ul>            
-                
-            <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
-
-            
-            <ul style="list-style: none;">
-
-              <li><%= link_to "ゲーム機のタグを追加" ,   group_path(cate: "console") %></li>
-              <li><%= ("<br><br><br>").html_safe %></li>  
-            </ul>                
-            
-            <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
-
-            
-            <ul style="list-style: none;">
-                  
-              <li><%= link_to "通信ツールタグを追加"         ,   group_path(cate: "contact") %></li>
-              <li><%= ("<br><br><br>").html_safe %></li>           
-            </ul>
-
-            <%= render partial: 'informations/had_information', locals: { category: "style", mode: "group",  owner: @group } %>
-            <ul style="list-style: none;">
-                   
-              <li><%= link_to "プレイスタイルタグを追加"     ,    group_path(cate: "style") %></li>
-              <li><%= ("<br><br><br>").html_safe %></li>           
-            </ul>            
-            
-            
- 
-    </aside>
-
-    
-<div class="lef">     
-  <% if @group.microposts.any? %>
-    <h3>投稿数 (<%= @group.microposts.count %>)</h3>
-    <ol class="microposts">
-      <%= render @microposts %>
-    </ol>
-    <%= will_paginate @microposts %>
-  <% end %>
-</div>
-</div>       
+      </div>
+    </div>       
   </div>
 </div>
 
 <% else %>
-  
   <div class="content">
     <div class="left">
       <%= link_to "#{@group.name}のグループページへ戻る", group_path(@group, cate: "none") %>
     </div>  
   </div>
-
-<%= will_paginate %>
+  <%= will_paginate %>
   <ul class="users">
     <%= render collection: @groups, as: 'information', partial: 'informations/information', locals: { mode: "group"}  %>
   </ul>
-<%= will_paginate %>
-
+  <%= will_paginate %>
 <% end %>

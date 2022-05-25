@@ -1,16 +1,16 @@
 <div>
   <div><%= link_to information.content, information_path(information, mode: "group") %><div>
-    <% if current_user.admin? %>
-      | <%= link_to "削除", information, method: :delete,
-                                    data: { confirm: "削除しますか?" } %>
-    <% end %>      
-    
-    <% case mode %>
-    <% when "user" %>
-        <!--%= render 'have_form' if logged_in? %>-->
-      <%= render partial: 'informations/have_form', locals: { information: information } if logged_in? %>
-    <% when "group" %>
-      <%= render partial: 'groups/tag_form', locals: { information: information } if logged_in? %>
-    <% end %>
-    <hr>  
-  </div>
+  <% if current_user.admin? %>
+    | <%= link_to "削除", information, method: :delete,
+                                  data: { confirm: "削除しますか?" } %>
+  <% end %>      
+  
+  <% case mode %>
+  <% when "user" %>
+    <!--%= render 'have_form' if logged_in? %>-->
+    <%= render partial: 'informations/have_form', locals: { information: information } if logged_in? %>
+  <% when "group" %>
+    <%= render partial: 'groups/tag_form', locals: { information: information } if logged_in? %>
+  <% end %>
+  <hr>  
+</div>

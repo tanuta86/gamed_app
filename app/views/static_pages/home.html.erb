@@ -19,7 +19,6 @@
               <%= render @self_introduction %>
               <%= link_to "自己紹介文編集", edit_self_introduction_path(current_user.self_introduction) %>              
             </ol>
-        
           </div>
         <% else %>  
           <div style="margin-left: 10%">         
@@ -27,7 +26,6 @@
           </div>
           <%= render 'shared/self_introduction_form' %>  
         <% end %>
-  
       </section>      
       <section class="micropost_form">
         <div style="margin-left: 10%">         
@@ -36,7 +34,6 @@
         <%= render 'shared/group_form' %>
       </section>  
       <br>      
-  
      <!--最近プレイ プレイした 持っている 連絡ツール 重視する項目 グループ-->
      <!--それぞれのcontent-->
      <!--それぞれの追加用ページリンク-->
@@ -50,7 +47,6 @@
           <li><%= ("<br>").html_safe %></li>           
           <li><%= link_to "プレイしたゲームタグの追加と最近遊ぶゲームリスト編集"   ,   informations_path(cate: "played") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>
-            
         </ul>
             
         <%= render partial: 'informations/had_information', locals: { category: "console", mode: "user",  owner: current_user } %>
@@ -82,7 +78,6 @@
           <ol class="microposts">
             <%= render partial: 'groups/group', collection: @groups3, as: "group" %>  
           </ol>
-  
         <% else %>
           <ul style="list-style: none;">
             <li><%= ("<br>").html_safe %></li>                     
@@ -98,30 +93,27 @@
           <ol class="microposts">
             <%= render partial: 'groups/group', collection: @groups2, as: "group" %>             
           </ol>
-  
         <% else %>
-        <ul style="list-style: none;">
-          <li><%= ("<br>").html_safe %></li>                     
-          <font size="3"><%= "作成したグループはありません" %></font>
-        </ul>   
+          <ul style="list-style: none;">
+            <li><%= ("<br>").html_safe %></li>                     
+            <font size="3"><%= "作成したグループはありません" %></font>
+          </ul>   
         <% end %>
-          
       </section>
       <div class="col-md-8">
         <!--<h3>フォローユーザー一覧</h3>-->
         <!--%= render 'shared/feed' %>-->
       </div>
   
-  <% else %>
-  
-    <div class="center jumbotron">
-      <h1>ゲームドへようこそ！</h1>
-  
-      <%= link_to "サインアップしてゲームドを始める！！", signup_path, class: "btn btn-lg btn-primary" %>
+      <% else %>
+       <div class="center jumbotron">
+        <h1>ゲームドへようこそ！</h1>
+      
+        <%= link_to "サインアップしてゲームドを始める！！", signup_path, class: "btn btn-lg btn-primary" %>
     </aside>
     <br>
     <br>
-  <div><%= link_to "作成済みアカウントでログインする", login_path %></div>
-  </div>
-<% end %>
-   
+    <div><%= link_to "作成済みアカウントでログインする", login_path %></div>
+
+        <% end %>
+    </div>   

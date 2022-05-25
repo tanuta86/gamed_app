@@ -42,5 +42,4 @@ class HaveInformationsController < ApplicationController
   def recently_MAX? 
     current_user.informations.where("recently = ?", true).count == 10 
   end
-  
 end
