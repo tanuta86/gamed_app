@@ -1,0 +1,16 @@
+<h1>新規タグの作成</h1>
+<h2>(管理者専用)</h2> 
+<br>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_with(model: @information, url: informations_path, local: true) do |f| %>        
+    <%= render 'shared/error_messages', object: f.object %>
+    
+    <%= f.label :category, "カテゴリー(played,console,contact,style)" %>
+    <%= f.select :category, [ ["played",1], ["console", 2], ["contact", 3 ] ,["style", 4] ],
+                            prompt: "カテゴリーを選択してください", class: "form-control" %>
+  
+    <%= f.label :content, "内容" %>
+    <%= f.text_field :content, class: 'form-control' %>
+    <%= f.submit "タグを作成！", class: "btn btn-primary" %>
+  <% end %>
+</div>

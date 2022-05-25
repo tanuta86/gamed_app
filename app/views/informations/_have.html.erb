@@ -1,7 +1,7 @@
 <% @info = information %>
 <%= form_with(model: current_user.have_informations.build, local: false) do |f| %>
   <div><%= hidden_field_tag :information_id, @info.id %></div>
-  <%= f.submit "追加する", class: "btn btn-primary" %>
+  <%= f.submit "タグを追加する", class: "btn btn-primary" %>
 <% end %>
 
 <!--%= form_with(model: current_user.have_informations.build, local: false) do |f| %>-->

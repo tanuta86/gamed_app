@@ -4,11 +4,9 @@ class SelfIntroductionsController < ApplicationController
 
   def create
     @self_introduction = current_user.build_self_introduction(self_introduction_params)
-    
     # if @self_introduction.image.present?
     #   @self_introduction.image.attach(params[:self_introduction][:image]) 
     # end
-    
     if @self_introduction.save
       flash[:success] = "自己紹介文作成完了!"
       #OK!!
@@ -19,11 +17,21 @@ class SelfIntroductionsController < ApplicationController
       render 'static_pages/home'
     end
   end
+  
+  def edit
+    @self_introduction = current_user.self_introduction
+  end
 
-# 変更
+  def update
+    @self_introduction = current_user.self_introduction
+    if @self_introduction.update(self_introduction_params)
+      flash[:success] = "更新完了"
+    end
+    redirect_to root_url     
+  end
+
   def destroy
     @self_introduction.destroy
-    
     flash[:success] = "自己紹介文を削除しました！"
     redirect_to request.referrer || root_url
   end
@@ -31,7 +39,7 @@ class SelfIntroductionsController < ApplicationController
   private
 
     def self_introduction_params
-      params.permit(:content, :image)
+      params.require(:self_introduction).permit(:content)
     end
 
     

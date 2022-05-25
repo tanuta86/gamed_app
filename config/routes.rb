@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   # get  '/information',  to: 'informations#index'
-  get  '/category',  to: 'informations#category'
+  # get  '/category',  to: 'informations#category'
   
 
 
@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :self_introductions,  only: [:create, :destroy]
+  resources :self_introductions,  only: [:edit, :update, :create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :informations,        only: [:index, :create, :destroy]
   resources :have_informations,   only: [:create, :destroy, :edit]
   resources :groups,              only: [:create, :destroy, :index, :show, :update]
   resources :tags,                only: [:create, :destroy]

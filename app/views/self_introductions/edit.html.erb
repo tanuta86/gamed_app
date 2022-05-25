@@ -1,0 +1,11 @@
+<% provide(:title, "Edit self_introduction") %>
+<h1>自己紹介文編集</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @self_introduction, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :content , "自己紹介文"%>
+      <%= f.text_field :content, class: 'form-control' %>
+      <%= f.submit "変更を保存", class: "btn btn-primary" %>
+    <% end %>
