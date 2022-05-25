@@ -10,6 +10,17 @@ class InformationsController < ApplicationController
       
     end
   end
+  
+  def show
+    @information = Information.find(params[:id])
+    @user = current_user
+    case params[:mode]
+    when "user"
+      @informations = @information.users.paginate(page: params[:page])
+    when "group"
+      @informations = @information.groups.paginate(page: params[:page])
+    end  
+  end 
 
   def create
     @information = Information.new(information_params)

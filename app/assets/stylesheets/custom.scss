@@ -295,8 +295,6 @@ span.image {
   }
 }
 
-
-
 .cate{
     li {
     border-bottom:2px solid #666;
@@ -316,7 +314,7 @@ span.image {
 } 
 
 .left{
-  margin-left: 60%;
+  margin-left: 5%;
 }
 
 /* microposts */
@@ -369,8 +367,13 @@ span.image {
 
 .fle{
   display: flex;
+  flex-direction: column;
 }
 
 .lef{
   margin-left: 13%;
+}
+
+.inner{
+  text-align: center;
 }

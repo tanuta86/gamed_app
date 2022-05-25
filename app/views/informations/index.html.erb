@@ -1,5 +1,6 @@
-<div class=cate>
+<div class="fle">
 <% provide(:title, @params) %>
+<div>
 <% case @params %>
 <% when "played"  %>
   <h1>プレイしたゲームを選択する</h1>
@@ -23,13 +24,16 @@
   <%= render root_url  =%>  
 
 <% end  %>  
-
+</div>
+<div>
 <%= will_paginate %>
 
   <ul class="users">
-
-    <%= render collection: @informations, partial: 'informations/information', locals: { mode: "user" } %>
-
+<div class="fle">
+    <%= render collection: @informations, partial: 'information', locals: { mode: "user" } %>
+</div>
   </ul>
 
 <%= will_paginate %>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<% provide(:title, @information.content) %>
+<div class="inner">   
+<h3><%= @information.content %></h3>
+<br>
+</div>
+<%= will_paginate %>
+
+
+<ul class="users">
+<% case params[:mode] %>
+<% when "user" %>
+  <%= "#{@information.content}をタグ付けしたプレイヤー" %>
+  <div><%= link_to "タグ付けされたグループを表示", information_path(@information, mode: "group") %><div>    
+  <%= render partial: 'users/user',  collection: @informations, as: 'user' %>
+<% when "group" %>
+  <%= "#{@information.content}にタグ付けされたグループ" %>
+  <div><%= link_to "タグ付けしたユーザーを表示", information_path(@information, mode: "user") %><div>        
+  <%= render partial: 'groups/group',  collection: @informations, as: 'group' %>
+<% end %>  
+</ul>
+<%= will_paginate %>
+
+
+
+

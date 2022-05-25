@@ -1,1 +1,1 @@
-$("#have").html("<%= escape_javascript(render partial: 'informations/have', locals: { information: information }) %>");
+$("#have_form").html("<%= escape_javascript(render(partial: 'informations/have', locals: { information: @information })) %>");

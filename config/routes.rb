@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :self_introductions,  only: [:edit, :update, :create, :destroy]
   resources :relationships,       only: [:create, :destroy]
-  resources :informations,        only: [:index, :create, :destroy]
+  resources :informations,        only: [:index, :show, :create, :destroy]
   resources :have_informations,   only: [:create, :destroy, :edit]
   resources :groups,              only: [:create, :destroy, :index, :show, :update]
   resources :tags,                only: [:create, :destroy]

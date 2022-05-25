@@ -22,8 +22,8 @@
         
           </div>
         <% else %>  
-        <div style="margin-left: 10%">         
-          <h3>自己紹介文作成</h3>      
+          <div style="margin-left: 10%">         
+            <h3>自己紹介文作成</h3>      
           </div>
           <%= render 'shared/self_introduction_form' %>  
         <% end %>
@@ -48,7 +48,7 @@
         <%= render partial: 'informations/had_information', locals: { category: "played"  , mode: "user",  owner: current_user } %> 
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>           
-          <li><%= link_to "プレイしたゲームの追加または最近遊ぶゲームリスト編集"   ,   informations_path(cate: "played") %></li>
+          <li><%= link_to "プレイしたゲームタグの追加と最近遊ぶゲームリスト編集"   ,   informations_path(cate: "played") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>
             
         </ul>
@@ -56,21 +56,21 @@
         <%= render partial: 'informations/had_information', locals: { category: "console", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li> 
-          <li><%= link_to "持っているゲーム機を追加" ,   informations_path(cate: "console") %></li>
+          <li><%= link_to "持っているゲーム機タグを追加" ,   informations_path(cate: "console") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>  
         </ul>            
   
         <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
-          <li><%= link_to "通信ツールを追加"         ,   informations_path(cate: "contact") %></li>
+          <li><%= link_to "通信ツールタグを追加"         ,   informations_path(cate: "contact") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
   
         <%= render partial: 'informations/had_information', locals: { category: "style", mode: "user",  owner: current_user } %>
         <ul style="list-style: none;">
           <li><%= ("<br>").html_safe %></li>                     
-          <li><%= link_to "プレイスタイルを追加"     ,    informations_path(cate: "style") %></li>
+          <li><%= link_to "プレイスタイルタグを追加"     ,    informations_path(cate: "style") %></li>
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
   
