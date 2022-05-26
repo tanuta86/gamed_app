@@ -377,3 +377,7 @@ span.image {
   text-align: center;
 }
 
+.column {
+  display:flex;
+  flex-flow: column;
+}

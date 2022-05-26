@@ -6,7 +6,7 @@
     <%= render 'shared/error_messages', object: f.object %>
     
     <%= f.label :category, "カテゴリー(played,console,contact,style)" %>
-    <%= f.select :category, [ ["played",1], ["console", 2], ["contact", 3 ] ,["style", 4] ],
+    <%= f.select :category, [ ["played","played"], ["console", "console"], ["contact", "contact" ] ,["style", "style"] ],
                             prompt: "カテゴリーを選択してください", class: "form-control" %>
   
     <%= f.label :content, "内容" %>

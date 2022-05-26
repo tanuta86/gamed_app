@@ -13,7 +13,7 @@
       </section>
       <section class="self_introduction_form">
         <% if current_user.self_introduction.present? %>
-          <div style="margin-left: 10%">         
+          <div style="margin-left: 0%">         
             <h3>自己紹介</h3>
             <ol class="self_introductions">
               <%= render @self_introduction %>
@@ -21,14 +21,14 @@
             </ol>
           </div>
         <% else %>  
-          <div style="margin-left: 10%">         
+          <div style="margin-left: 0%">         
             <h3>自己紹介文作成</h3>      
           </div>
           <%= render 'shared/self_introduction_form' %>  
         <% end %>
       </section>      
       <section class="micropost_form">
-        <div style="margin-left: 10%">         
+        <div style="margin-left: 0%">         
           <h3>新規グループ作成</h3>      
         </div>        
         <%= render 'shared/group_form' %>
@@ -37,7 +37,7 @@
      <!--最近プレイ プレイした 持っている 連絡ツール 重視する項目 グループ-->
      <!--それぞれのcontent-->
      <!--それぞれの追加用ページリンク-->
-      <div style="margin-left: 10%">         
+      <div style="margin-left: 8%">         
         <h3>プレイヤー情報</h3>      
       </div>   
       <section>
@@ -70,7 +70,7 @@
           <li><%= ("<br><br><br>").html_safe %></li>           
         </ul>
   
-        <div style="margin-left: 10%">
+        <div style="margin-left: 8%">
           <h3>お気に入りのグループ</h3>      
         </div>
         <br>
@@ -85,7 +85,7 @@
           </ul>   
         <% end %>
         <br>
-        <div style="margin-left: 10%">         
+        <div style="margin-left: 8%">         
           <h3>作成したグループ</h3>      
         </div>
         <br>

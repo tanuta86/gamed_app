@@ -1,4 +1,4 @@
-<div class="fle">
+<div class="column">
   <% provide(:title, @params) %>
   <div>
     <% case @params %>
@@ -26,7 +26,7 @@
   <div>
     <%= will_paginate %>
     <ul class="users">
-      <div class="fle">
+      <div class="column">
         <%= render collection: @informations, partial: 'information', locals: { mode: "user" } %>
       </div>
     </ul>
