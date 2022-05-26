@@ -24,7 +24,7 @@ class SelfIntroductionsController < ApplicationController
 
   def update
     @self_introduction = current_user.self_introduction
-    if @self_introduction.update(self_introduction_params)
+    if @self_introduction.update(self_introduction_update_params)
       flash[:success] = "更新完了"
     end
     redirect_to root_url     
@@ -39,8 +39,12 @@ class SelfIntroductionsController < ApplicationController
 private
 
   def self_introduction_params
-    params.require(:self_introduction).permit(:content)
+    params.permit(:content)
   end
+  
+  def self_introduction_update_params
+    params.require(:self_introduction).permit(:content)
+  end  
 
   def correct_user
      # todo

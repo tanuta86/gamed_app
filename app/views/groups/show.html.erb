@@ -1,50 +1,70 @@
 <% if @params == "none" %>
+  <h1>グループページ</h1> 
+  <%= render @group %>
+
   <div class="row">
-    <div class="col-md-10">
-      <h2>グループページ</h2>      
-      <%= render @group %>
-      <div class="fle">       
-        <aside class="col-md-5">
-          <% if logged_in? %>
-            <section class="micropost_form">
-              <%= render partial: 'shared/micropost_form', locals: { group: @group } %>
-            </section>
-          <% end %>
+    <div class="fle">       
+      <aside class="col-md-4">
+        <% if logged_in? %>
+          <section class="micropost_form">
+            <div style="margin-left: 5%">         
+              <h3>グループ投稿</h3>      
+            </div>                 
+            <%= render partial: 'shared/micropost_form', locals: { group: @group } %>
+          </section>
+        <% end %>
 
-          <% if current_user == @group.user || current_user.admin? %>  
-            <%= form_with(model: @group, local: true) do |f| %>
-              <%= render 'shared/error_messages', object: f.object %>
-              <div class="field">
-                <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
-                <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
-              </div>
-            <% end %>
+        <% if current_user == @group.user || current_user.admin? %>  
+          <%= form_with(model: @group, local: true) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div style="margin-left: 5%">         
+              <h3>グループ説明文の更新</h3>      
+            </div>                
+            <div class="field">
+              <%= f.text_area  :explanation, placeholder: "グループの説明文更新...", id: @group.id %>
+              <%= f.submit "グループの説明文を更新する", class: "btn btn-primary" %>
+            </div>
+            <br>
+            <br>          
           <% end %>
+          <%= form_with(model: @group, local: true) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div style="margin-left: 5%">         
+              <h3>グループ画像の更新</h3>      
+            </div>  
+            <span class="image">
+              <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>    
+            </span>  
+            <%= f.submit "グループ画像を更新する", class: "btn btn-primary" %>    
+          <% end %>
+          <br>          
           <br>
-          <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
-          <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
-          <ul style="list-style: none;">
-            <li><%= link_to "ゲームタグ追加"   ,   group_path(cate: "played") %></li>
-            <li><%= ("<br><br><br>").html_safe %></li>
-          </ul>            
-          <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
-          <ul style="list-style: none;">
-            <li><%= link_to "ゲーム機のタグを追加" ,   group_path(cate: "console") %></li>
-            <li><%= ("<br><br><br>").html_safe %></li>  
-          </ul>                
-          <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
-          <ul style="list-style: none;">
-            <li><%= link_to "通信ツールタグを追加"         ,   group_path(cate: "contact") %></li>
-            <li><%= ("<br><br><br>").html_safe %></li>           
-          </ul>
-
-          <%= render partial: 'informations/had_information', locals: { category: "style", mode: "group",  owner: @group } %>
-          <ul style="list-style: none;">
-            <li><%= link_to "プレイスタイルタグを追加"     ,    group_path(cate: "style") %></li>
-            <li><%= ("<br><br><br>").html_safe %></li>           
-          </ul>            
-        </aside>
-        <div class="lef">     
+          <br>              
+        <% end %>
+        <div><font size="5"><%= ("&nbsp;グループの登録タグ").html_safe %></font></div>
+        <%= render partial: 'informations/had_information', locals: { category: "played",  mode: "group", owner: @group } %>
+        <ul style="list-style: none;">
+          <li><%= link_to "ゲームタグ追加"   ,   group_path(cate: "played") %></li>
+          <li><%= ("<br><br><br>").html_safe %></li>
+        </ul>            
+        <%= render partial: 'informations/had_information', locals: { category: "console", mode: "group", owner: @group } %>    
+        <ul style="list-style: none;">
+          <li><%= link_to "ゲーム機のタグを追加" ,   group_path(cate: "console") %></li>
+          <li><%= ("<br><br><br>").html_safe %></li>  
+        </ul>                
+        <%= render partial: 'informations/had_information', locals: { category: "contact", mode: "group", owner: @group } %>
+        <ul style="list-style: none;">
+          <li><%= link_to "通信ツールタグを追加"         ,   group_path(cate: "contact") %></li>
+          <li><%= ("<br><br><br>").html_safe %></li>           
+        </ul>
+        
+        <%= render partial: 'informations/had_information', locals: { category: "style", mode: "group",  owner: @group } %>
+        <ul style="list-style: none;">
+          <li><%= link_to "プレイスタイルタグを追加"     ,    group_path(cate: "style") %></li>
+          <li><%= ("<br><br><br>").html_safe %></li>           
+        </ul>            
+      </aside>
+      <div class="lef"> 
         <% if @group.microposts.any? %>
           <h3>投稿数 (<%= @group.microposts.count %>)</h3>
           <ol class="microposts">
@@ -52,10 +72,11 @@
           </ol>
           <%= will_paginate @microposts %>
         <% end %>
-      </div>
-    </div>       
+      </div>  
+    </div> 
+
   </div>
-</div>
+
 
 <% else %>
   <div class="content">
@@ -69,3 +90,4 @@
   </ul>
   <%= will_paginate %>
 <% end %>
+
