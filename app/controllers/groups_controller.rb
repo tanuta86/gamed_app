@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     flash[:success] = "グループを削除しました！"
-    redirect_to request.referrer || root_url
+    root_url
   end
   
   def update
