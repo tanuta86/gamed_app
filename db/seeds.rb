@@ -36,7 +36,7 @@ User.create!(name:  "たぬお",
              activated_at: Time.zone.now)           
              
 
-# ユーザーの一部を対象にマイクロポストを生成する
+# ユーザーの一部を対象に自己紹介文を生成する
 users = User.order(:created_at).take(6)
 
   users.each { |user| user.build_self_introduction(content: "#{Faker::Creature::Animal.name}が好きです！").save! }
