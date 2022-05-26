@@ -4,6 +4,9 @@ gem 'rails',      '6.0.4.4'
 gem 'aws-sdk-s3', '1.48', require: false
 gem 'image_processing',        '1.9.3'
 gem 'mini_magick',                '4.9.5'
+
+gem 'carrierwave'
+
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt',                     '3.1.13'
 gem 'faker',                   '2.20.0'
@@ -45,6 +48,8 @@ end
 
 group :production do
   gem 'pg', '1.1.4'
+  gem 'rails_12factor', '0.0.2'
+  gem 'fog-aws'  
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
