@@ -1,6 +1,4 @@
 class Micropost < ApplicationRecord
-  mount_uploader :image, ImageUploader
-  
   belongs_to :user
   belongs_to :group
   has_one_attached :image

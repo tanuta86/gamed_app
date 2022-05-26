@@ -7,7 +7,6 @@
   <div><%= hidden_field_tag :group_id, group.id %></div>
   <%= f.submit "投稿", class: "btn btn-primary" %>
   <span class="image">
-    <%= f.label :image, "画像：" %>    
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
   </span>
 <% end %>
