@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',      '6.0.4.4'
+
 gem 'aws-sdk-s3', '1.83.0', require: false
 gem 'image_processing',        '1.9.3'
 gem 'mini_magick',                '4.9.5'
