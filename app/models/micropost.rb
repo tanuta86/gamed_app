@@ -2,11 +2,9 @@ class Micropost < ApplicationRecord
   belongs_to :user
   belongs_to :group
   
-  if Rails.env.production?
-    has_one_attached :image, service: :s3
-  else  
+  
     has_one_attached :image
-  end
+
 
   default_scope -> { order(created_at: :desc) }
   validates :user_id,  presence: true
