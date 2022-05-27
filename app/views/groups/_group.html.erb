@@ -10,7 +10,7 @@
   <br>  
   
   <div><%= link_to "作成者：#{group.user.name}", group.user %></div>
-  <div><%= image_tag group.display_image if group.image.attached? %></div>
+  <div><%= image_tag group.image if group.image.attached? %></div>
   <% if current_user == group.user || current_user.admin? %>  
     <div><%= link_to "削除", group, method: :delete,
                         data: { confirm: "削除しますか?" } %></div>
