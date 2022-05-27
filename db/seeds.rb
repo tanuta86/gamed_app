@@ -33,7 +33,23 @@ User.create!(name:  "たぬお",
              password_confirmation: "foobar",
              admin:     true,
              activated: true,
-             activated_at: Time.zone.now)           
+             activated_at: Time.zone.now)  
+             
+User.create!(name:  "jennifer lawrence",
+             email: "t.s.a.tahpkar2@gmail.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now) 
+             
+User.create!(name:  "anduin wrynn",
+             email: "t.s.a.tahpkar3@gmail.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)              
              
 
 # ユーザーの一部を対象に自己紹介文を生成する
