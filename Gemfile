@@ -6,7 +6,9 @@ gem 'aws-sdk-s3', '1.83.0', require: false
 gem 'image_processing',        '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'cloudinary' , '1.11.1'
-gem 'carrierwave'
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 gem 'active_storage_validations', '0.8.2'
 gem 'bcrypt',                     '3.1.13'
