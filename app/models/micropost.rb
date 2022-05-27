@@ -1,9 +1,7 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   belongs_to :group
-  
-  
-    has_one_attached :image
+  has_one_attached :image, service: :s3
 
 
   default_scope -> { order(created_at: :desc) }
