@@ -74,7 +74,7 @@
           <h3>お気に入りのグループ</h3>      
         </div>
         <br>
-        <% if @groups.first.name.present? %>
+        <% if @groups3.first.name.present? %>
           <ol class="microposts">
             <%= render partial: 'groups/group', collection: @groups3, as: "group" %>  
           </ol>
