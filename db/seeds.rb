@@ -10,7 +10,7 @@ User.create!(name:  "Example User",
 # 追加のユーザーをまとめて生成する
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@exa.org"
   password = "password"
   User.create!(name:  name,
               email: email,
